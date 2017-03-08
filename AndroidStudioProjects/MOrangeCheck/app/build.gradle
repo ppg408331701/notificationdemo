@@ -1,0 +1,64 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "webapps.MOrangeCheck.com"
+        minSdkVersion 17
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding{
+        enabled true
+    }
+    lintOptions{
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
+    testCompile 'junit:junit:4.12'
+    //主要依赖包
+    compile project(':ppglibrary')
+    //数据库
+    compile 'org.litepal.android:core:1.4.1'
+    //gson
+    compile 'com.google.code.gson:gson:2.6.2'
+    //假期半弧进度条
+    compile project(':view')
+
+    //可拖拽消除的view
+    compile 'q.rorbin:badgeview:1.0.6'
+    //图片选择器
+    compile 'com.bilibili:boxing-impl:0.3.5'
+    //裁剪
+    compile('com.yalantis:ucrop:2.2.0') {
+        exclude group: 'com.android.support'
+        exclude group: 'com.squareup.okio'
+        exclude group: 'com.squareup.okhttp3'
+    }
+    //文件选择器 具体可看https://github.com/gzu-liyujiang/AndroidPicker
+    compile 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:1.4.3'
+    //时间选择器
+    compile 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
+    //时间线
+    compile 'com.xyz.step:step:1.0.4'
+
+}

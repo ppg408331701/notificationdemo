@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroud_theme"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/top_bar_h"
+            android:background="@color/backgroud_theme">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/app_name"
+                android:textColor="@color/black0"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/bt_login"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_tra_selector"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textSize="17sp"
+                android:text="登录"
+                android:textColor="@color/text_color_edit_gray" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/shadow" />
+
+
+        <RelativeLayout
+            android:id="@+id/rl_id"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_marginTop="25dp"
+            android:visibility="gone"
+            android:background="@color/white">
+
+            <EditText
+                android:id="@+id/ed_id"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:layout_marginLeft="100dp"
+                android:background="@null"
+                android:gravity="center"
+                android:hint="必填"
+                android:paddingLeft="-100dp"
+                android:textColorHint="@color/gray_cdcdcd"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="@dimen/edittext_height"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="团体/组织ID"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/iv_id_group"
+                android:layout_width="@dimen/edittext_height"
+                android:layout_height="@dimen/edittext_height"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/btn_bg_selector"
+                android:gravity="center"
+                android:padding="10dp"
+                android:scaleType="centerInside"
+                android:src="@mipmap/down_arrow" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="@dimen/edittext_height"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="@dimen/edittext_height"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="手机号"
+                android:textColor="@color/black0"
+                android:textSize="14sp" />
+
+
+            <EditText
+                android:id="@+id/ed_phone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:layout_marginLeft="100dp"
+                android:background="@null"
+                android:gravity="center"
+                android:hint="必填"
+                android:inputType="number"
+                android:maxLength="11"
+                android:paddingLeft="-100dp"
+                android:textColorHint="@color/text_color_edit_gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_getcode"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/edittext_height"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/btn_bg_selector"
+                android:gravity="center"
+                android:padding="11dp"
+                android:text="发送验证码"
+                android:textColor="@color/text_color_edit_gray"
+                android:textSize="12sp" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/backgroud_color" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edittext_height"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="100dp"
+                android:layout_height="@dimen/edittext_height"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="验证码"
+                android:textColor="@color/black0"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/ed_code"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:layout_marginLeft="100dp"
+                android:background="@null"
+                android:gravity="center"
+                android:hint="必填"
+                android:inputType="number"
+                android:maxLength="6"
+                android:paddingLeft="-100dp"
+                android:textColorHint="@color/text_color_edit_gray"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</layout>

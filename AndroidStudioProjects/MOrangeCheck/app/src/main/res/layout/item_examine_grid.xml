@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:gravity="center"
+    android:background="@drawable/btn_bg_rantger_selector"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_examine_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/examine_caigou" />
+
+    <TextView
+        android:id="@+id/tv_examine_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="" />
+
+
+</LinearLayout>

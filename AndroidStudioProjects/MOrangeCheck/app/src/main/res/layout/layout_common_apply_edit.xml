@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white0"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:showIn="@layout/fragment_common_time_apply">
+
+        <EditText
+            android:id="@+id/ed_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white0"
+            android:hint="申请内容"
+            android:lines="1"
+            android:paddingLeft="@dimen/item_padding_left"
+            android:textColorHint="@color/gray5"
+            android:textSize="13sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/item_padding_left"
+            android:background="@color/backgroud_theme" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white0"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/ed_content"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginBottom="45dp"
+                android:background="@color/white0"
+                android:gravity="left|top"
+                android:hint="详情说明"
+                android:paddingBottom="10dp"
+                android:paddingLeft="@dimen/item_padding_left"
+                android:paddingRight="@dimen/item_padding_left"
+                android:paddingTop="10dp"
+                android:textColorHint="@color/gray5"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_accessory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:showDividers="middle"
+                android:divider="@drawable/listdivider_whlte"
+                android:orientation="vertical">
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_exiamine_upload"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_gravity="bottom|right"
+                android:background="@drawable/btn_bg_selector"
+                android:gravity="center"
+               android:layout_marginRight="10dp"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:src="@mipmap/examine_biezhen" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/yellow2"
+                    android:text="附件" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

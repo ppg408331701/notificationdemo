@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroud_theme"
+            android:orientation="vertical">
+
+            <webapps.MOrangeCheck.com.Views.compactcalendarview.CompactCalendarView
+                android:id="@+id/compactcalendar_view"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:compactCalendarBackgroundColor="@color/white0"
+                app:compactCalendarCurrentDayBackgroundColor="@color/orange1"
+                app:compactCalendarCurrentSelectedDayBackgroundColor="@color/yellow2"
+                app:compactCalendarOtherMonthDaysTextColor="@color/gray5"
+                app:compactCalendarTargetHeight="230dp"
+                app:compactCalendarTextColor="@color/black3"
+                app:compactCalendarTextSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white0"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+
+                <LinearLayout style="@style/circle_layout">
+
+                    <View
+                        style="@style/circle_size"
+                        android:background="@drawable/circle_dark_red" />
+
+                    <TextView
+                        android:text="加班"
+                        style="@style/circle_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/circle_layout">
+
+                    <View
+                        style="@style/circle_size"
+                        android:background="@drawable/circle_nomal_red" />
+
+                    <TextView
+                        style="@style/circle_text_size"
+                        android:text="夜班" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/circle_layout">
+
+                    <View
+                        style="@style/circle_size"
+                        android:background="@drawable/circle_grass_green" />
+
+                    <TextView
+                        style="@style/circle_text_size"
+                        android:text="调休" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/circle_layout">
+
+                    <View
+                        style="@style/circle_size"
+                        android:background="@drawable/circle_dark_blue" />
+
+                    <TextView
+                        style="@style/circle_text_size"
+                        android:text="外出" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/circle_layout">
+
+                    <View
+                        style="@style/circle_size"
+                        android:background="@drawable/circle_light_blue" />
+
+                    <TextView
+                        style="@style/circle_text_size"
+                        android:text="行政班" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white0"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <LinearLayout style="@style/circle_layout">
+
+                    <View
+                        style="@style/circle_size"
+                        android:background="@drawable/circle_super_red" />
+
+                    <TextView
+                        style="@style/circle_text_size"
+                        android:text="年假" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/circle_layout">
+
+                    <View
+                        style="@style/circle_size"
+                        android:background="@drawable/circle_nomal_grey" />
+
+                    <TextView
+                        style="@style/circle_text_size"
+                        android:text="早班" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/circle_layout">
+
+                    <View
+                        style="@style/circle_size"
+                        android:background="@drawable/circle_nomal_cyan" />
+
+                    <TextView
+                        style="@style/circle_text_size"
+                        android:text="请假" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/circle_layout">
+
+                    <View
+                        style="@style/circle_size"
+                        android:background="@drawable/circle_dark_black" />
+
+                    <TextView
+                        style="@style/circle_text_size"
+                        android:text="调班" />
+
+                </LinearLayout>
+
+                <Space style="@style/circle_layout" />
+
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/add1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:visibility="gone"
+                android:text="添加" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/calander_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            </android.support.v7.widget.RecyclerView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+</layout>

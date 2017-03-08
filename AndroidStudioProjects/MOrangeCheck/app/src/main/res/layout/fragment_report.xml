@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroud_theme"
+            android:orientation="vertical">
+
+
+            <include
+                android:id="@+id/dashboard"
+                layout="@layout/view_dashboard" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <include
+                android:id="@+id/report"
+                layout="@layout/view_report" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <include
+                android:id="@+id/report_funcation"
+                layout="@layout/view_report_funcation" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+                <TextView
+                    android:id="@+id/tv_checkMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="30dp"
+                    android:textColor="@color/yellow2"
+                    android:text="浏览明细记录" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</layout>

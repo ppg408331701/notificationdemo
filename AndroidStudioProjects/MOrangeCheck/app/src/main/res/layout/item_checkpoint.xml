@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:id="@+id/ll_check_point"
+        android:layout_width="wrap_content"
+        android:layout_height="110dp"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:id="@+id/iv_checkpoint"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/fingerprint3" />
+
+        <TextView
+            android:id="@+id/tv_checkpoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="08:30" />
+
+    </LinearLayout>
+
+</layout>

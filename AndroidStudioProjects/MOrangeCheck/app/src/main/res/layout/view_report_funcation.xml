@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_late"
+            style="@style/RelativeLayout_item2">
+
+            <TextView
+                style="@style/item_text"
+                android:text="迟到" />
+
+            <ImageView style="@style/ArrowRight" />
+
+            <TextView
+                android:id="@+id/late"
+                style="@style/item_right_text2"
+                android:text="@string/repodefalf" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_leave"
+            style="@style/RelativeLayout_item2"
+            android:layout_marginTop="1dp">
+
+            <TextView
+                style="@style/item_text"
+                android:text="早退" />
+
+            <ImageView style="@style/ArrowRight" />
+
+            <TextView
+                android:id="@+id/leaveearly"
+                style="@style/item_right_text2"
+                android:text="@string/repodefalf" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_business"
+            style="@style/RelativeLayout_item2"
+            android:layout_marginTop="1dp">
+
+            <TextView
+                style="@style/item_text"
+                android:text="出差" />
+
+            <ImageView style="@style/ArrowRight" />
+
+            <TextView
+                android:id="@+id/businesstrip_hours"
+                style="@style/item_right_text2"
+                android:text="@string/repodefalf" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_absenteeism"
+            style="@style/RelativeLayout_item2"
+            android:layout_marginTop="1dp">
+
+            <TextView
+                style="@style/item_text"
+                android:text="旷工" />
+
+            <ImageView style="@style/ArrowRight" />
+
+            <TextView
+                android:id="@+id/absenteeism_day"
+                style="@style/item_right_text2"
+                android:text="@string/repodefalf" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_holiday"
+            style="@style/RelativeLayout_item2"
+            android:layout_marginTop="1dp">
+
+            <TextView
+
+                style="@style/item_text"
+                android:text="请假" />
+
+            <ImageView style="@style/ArrowRight" />
+
+            <TextView
+                android:id="@+id/leave_hours"
+                style="@style/item_right_text2"
+                android:text="@string/repodefalf" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_getOut"
+            style="@style/RelativeLayout_item2"
+            android:layout_marginTop="1dp">
+
+            <TextView
+                style="@style/item_text"
+                android:text="外出" />
+
+            <ImageView style="@style/ArrowRight" />
+
+            <TextView
+                style="@style/item_right_text2"
+                android:text="@string/repodefalf" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_overtime"
+            style="@style/RelativeLayout_item2"
+            android:layout_marginTop="1dp">
+
+            <TextView
+                style="@style/item_text"
+                android:text="加班" />
+
+            <ImageView style="@style/ArrowRight" />
+
+            <TextView
+                android:id="@+id/workovertime"
+                style="@style/item_right_text2"
+                android:text="@string/repodefalf" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rl_vacation_days"
+            style="@style/RelativeLayout_item2"
+            android:layout_marginTop="1dp">
+
+            <TextView
+                style="@style/item_text"
+                android:text="调休" />
+
+            <ImageView style="@style/ArrowRight" />
+
+            <TextView
+                style="@style/item_right_text2"
+                android:text="@string/repodefalf" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_annual_leave"
+            style="@style/RelativeLayout_item2"
+            android:layout_marginTop="1dp">
+
+            <TextView
+                style="@style/item_text"
+                android:text="年假" />
+
+            <ImageView style="@style/ArrowRight" />
+
+            <TextView
+                style="@style/item_right_text2"
+                android:text="@string/repodefalf" />
+
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+
+    </LinearLayout>
+
+</layout>

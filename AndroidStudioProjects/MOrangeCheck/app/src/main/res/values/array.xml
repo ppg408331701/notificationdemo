@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer-array name="company_funcation_icon">
+        <item>@mipmap/xiaoxi</item>
+        <item>@mipmap/shenpi</item>
+        <item>@mipmap/dongtaigonggao</item>
+        <item>@mipmap/wendang</item>
+        <item>@mipmap/gongju</item>
+    </integer-array>
+
+
+    <integer-array name="meeting_funcation_icon">
+        <item>@mipmap/xiaoxi</item>
+        <item>@mipmap/shenpi</item>
+        <item>@mipmap/dongtaigonggao</item>
+        <item>@mipmap/wendang</item>
+        <item>@mipmap/gongju</item>
+        <item>@mipmap/xiaoxi</item>
+        <item>@mipmap/shenpi</item>
+        <item>@mipmap/dongtaigonggao</item>
+        <item>@mipmap/wendang</item>
+        <item>@mipmap/gongju</item>
+    </integer-array>
+
+    <integer-array name="examine_funcation_icon">
+        <item>@mipmap/examine_qingjia</item>
+        <item>@mipmap/examine_jiaban</item>
+        <item>@mipmap/examine_chuchai</item>
+        <item>@mipmap/examine_tiaoban</item>
+        <item>@mipmap/examine_tiaoxiu</item>
+        <item>@mipmap/examine_loudaka</item>
+        <item>@mipmap/examine_waichu</item>
+        <item>@mipmap/examine_caigou</item>
+        <item>@mipmap/examine_tongyong</item>
+    </integer-array>
+</resources>

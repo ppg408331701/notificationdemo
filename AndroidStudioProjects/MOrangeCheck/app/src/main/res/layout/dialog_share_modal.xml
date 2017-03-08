@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="@color/backgroud_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="分享至"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/app_blue" />
+
+    <RelativeLayout
+        android:id="@+id/clickWeChatFriend"
+        android:layout_marginTop="1dp"
+        style="@style/RelativeLayout_item">
+
+        <TextView
+            style="@style/item_text"
+            android:text="微信好友" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/clickWeChatCircles"
+        android:layout_marginTop="1dp"
+        style="@style/RelativeLayout_item">
+        <TextView
+            style="@style/item_text"
+            android:text="微信好友圈" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/clickQQFriend"
+        android:layout_marginTop="1dp"
+        style="@style/RelativeLayout_item">
+        <TextView
+            style="@style/item_text"
+            android:text="QQ好友" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/clickWeiBo"
+        android:layout_marginTop="1dp"
+        style="@style/RelativeLayout_item">
+        <TextView
+            style="@style/item_text"
+            android:text="微博" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/clickSMS"
+        android:layout_marginTop="1dp"
+        style="@style/RelativeLayout_item">
+
+        <TextView
+            style="@style/item_text"
+            android:text="以短信方式分享" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/clickMail"
+        android:layout_marginTop="1dp"
+        style="@style/RelativeLayout_item">
+
+        <TextView
+            style="@style/item_text"
+            android:text="以邮件方式分享" />
+    </RelativeLayout>
+
+</LinearLayout>

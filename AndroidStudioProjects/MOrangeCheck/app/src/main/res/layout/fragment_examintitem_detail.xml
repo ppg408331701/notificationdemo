@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="53dp"
+
+            android:fillViewport="true">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/backgroud_theme"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/white0"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/item_margin_left">
+
+                    <ImageView
+                        android:id="@+id/iv_img"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:src="@drawable/circle_nomal_grey" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="80dp"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="张三" />
+
+                            <TextView
+                                android:id="@+id/tv_time"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:text="行政主管"
+                                android:textColor="@color/gray5" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_num"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="center"
+                            android:text="审批中"
+                            android:textColor="@color/orange22" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/item_padding_left"
+                    android:background="@color/backgroud_theme" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white0"
+                    android:padding="15dp"
+                    android:text="春节延迟请假申请" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/item_padding_left"
+                    android:background="@color/backgroud_theme" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white0"
+                    android:padding="15dp"
+                    android:text="春节延迟"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:id="@+id/ll_insert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white0"
+                    android:divider="@drawable/listdivider_whlte"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@color/backgroud_theme" />
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white0"
+                    android:overScrollMode="never"
+                    android:nestedScrollingEnabled="false"
+                    android:scrollbars="none">
+
+
+                </android.support.v7.widget.RecyclerView>
+
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            android:paddingBottom="1dp">
+
+            <LinearLayout
+                android:id="@+id/ll_ok"
+                style="@style/examine_item_bottom">
+
+                <ImageView
+                    style="@style/examine_item_iv"
+                    android:src="@mipmap/examine_ok" />
+
+                <TextView
+                    style="@style/examine_item_text"
+                    android:text="申请" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_no"
+                style="@style/examine_item_bottom">
+
+                <ImageView
+                    style="@style/examine_item_iv"
+                    android:src="@mipmap/examine_no" />
+
+                <TextView
+
+                    style="@style/examine_item_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="审批" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_pass"
+                style="@style/examine_item_bottom">
+
+                <ImageView
+                    style="@style/examine_item_iv"
+                    android:src="@mipmap/examine_pass" />
+
+                <TextView
+                    style="@style/examine_item_text"
+                    android:text="抄送" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_note"
+                style="@style/examine_item_bottom">
+
+                <ImageView
+                    style="@style/examine_item_iv"
+                    android:src="@mipmap/examine_note" />
+
+                <TextView
+                    style="@style/examine_item_text"
+                    android:text="抄送" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</layout>

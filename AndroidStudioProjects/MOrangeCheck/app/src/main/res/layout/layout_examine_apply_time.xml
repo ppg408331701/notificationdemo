@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white0"
+        tools:showIn="@layout/fragment_common_time_apply">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_start_time"
+            style="@style/RelativeLayout_item2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="起始时间" />
+
+            <TextView
+                android:id="@+id/tv_start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="30dp"
+                android:gravity="center"
+                android:textColor="@color/yellow2"
+                android:text="(请选择时间)" />
+
+
+            <ImageView style="@style/ArrowRight" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/item_padding_left"
+            android:background="@color/backgroud_theme" />
+
+        <RelativeLayout
+            android:id="@+id/rl_end_time"
+            style="@style/RelativeLayout_item2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="起始时间" />
+
+            <TextView
+                android:id="@+id/tv_end_time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="30dp"
+                android:textColor="@color/yellow2"
+                android:gravity="center"
+                android:text="(请选择时间)" />
+
+
+            <ImageView style="@style/ArrowRight" />
+
+        </RelativeLayout>
+
+
+
+
+        <TextView
+            android:id="@+id/tv_holiday_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroud_theme"
+            android:gravity="right"
+            android:padding="15dp"
+            android:text="共 0 天 0 小时 0 分钟" />
+
+
+    </LinearLayout>
+</layout>

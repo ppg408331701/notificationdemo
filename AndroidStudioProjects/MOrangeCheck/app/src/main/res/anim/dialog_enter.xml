@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+     android:interpolator="@android:anim/linear_interpolator"
+     android:shareInterpolator="true">
+    <!-- 从下到上弹出 -->
+
+    <alpha android:fromAlpha="0.0"
+           android:toAlpha="1.0"
+           android:duration="100"/>
+    <translate
+        android:duration="400"
+        android:fromYDelta="100%"
+        android:toYDelta="0%"
+        android:fillAfter="true"
+        android:interpolator="@android:anim/overshoot_interpolator" />
+
+
+</set>
+
+

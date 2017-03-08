@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@color/white0">
+
+        <ImageView
+            android:id="@+id/iv_meeting_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="签到"
+                android:textColor="@color/gray4"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_meeting_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="2017年2月12日08:00~09:00"
+                android:textColor="@color/gray4" />
+
+            <include
+                android:id="@+id/item_checkpoint"
+                layout="@layout/item_checkpoint2" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</layout>

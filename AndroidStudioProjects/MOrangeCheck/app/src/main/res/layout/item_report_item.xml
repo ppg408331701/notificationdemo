@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_vacation_days"
+    style="@style/item_report"
+
+    >
+
+
+        <TextView
+            android:id="@+id/tv_date"
+            style="@style/item_text"
+            android:text="9月1日" />
+
+        <ImageView style="@style/ArrowRight" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            style="@style/item_right_text2"
+            android:text="@string/repodefalf" />
+
+
+
+
+</RelativeLayout>

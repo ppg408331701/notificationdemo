@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:background="@drawable/btn_bg_selector">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:id="@+id/tv_examinebase_who"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="等待 张强 审批"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/orange2"/>
+
+
+            <TextView
+                android:id="@+id/tv_examinebase_time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="已耗时3小时"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="right"
+                android:textColor="@color/gray5"/>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-40dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/examinebase_shengqing"/>
+
+            </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_examinebase_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="使用工作流管理文档审批流程"/>
+
+            <TextView
+                android:id="@+id/tv_examinebase_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/gray5"
+                android:text="我 11/26 11:36"/>
+
+
+        </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+    
+    <ImageView
+        android:id="@+id/iv_examinebase_ok"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@mipmap/examinebase_agree"
+        android:layout_gravity="right"
+        android:layout_marginRight="30dp"/>
+
+</FrameLayout>
