@@ -93,6 +93,7 @@
                 android:animateLayoutChanges="true"
                 android:layout_marginTop="7.5dp"
                 android:showDividers="middle"
+                android:background="@color/white0"
                 android:divider="@drawable/listdivider"
                 android:orientation="vertical">
 

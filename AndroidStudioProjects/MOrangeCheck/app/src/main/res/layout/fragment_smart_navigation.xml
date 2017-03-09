@@ -5,26 +5,88 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/backgroud_theme"
         android:orientation="vertical">
 
-
-        <webapps.MOrangeCheck.com.Views.CircularProgressar
-            android:id="@+id/sesame_view"
-            android:layout_width="250dp"
-            android:layout_height="130dp"
-            android:layout_gravity="center"
-            app:backgroundLineColor="@color/black0"
-            app:circularSize="110dp"
-            app:circularlineSize="3dp" />
-
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewPager"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/white0"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+            <webapps.MOrangeCheck.com.Views.CircularProgressar
+                android:id="@+id/sesame_view"
+                android:layout_width="270dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                app:backgroundLineColor="@color/gray5"
+                app:circularLeftTextColor="@color/yellow2"
+                app:circularSize="120dp"
+                app:circularlineSize="3dp"
+                app:frontLineColor="@color/yellow2" />
+
+        </FrameLayout>
 
 
-        </android.support.v4.view.ViewPager>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:background="@color/white0"
+            android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tv_index"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/nagiation_left_yellow"
+                        android:gravity="center"
+                        android:textColor="@color/white0"
+                        android:text="索引" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tv_history"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/nagiation_right_gray"
+                        android:gravity="center"
+                        android:textColor="@color/gray4"
+                        android:text="历史" />
+
+                </LinearLayout>
+
+
+
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            </android.support.v4.view.ViewPager>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+        </LinearLayout>
+
+
     </LinearLayout>
 
 </layout>

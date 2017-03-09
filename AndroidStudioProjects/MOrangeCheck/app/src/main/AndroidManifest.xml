@@ -26,7 +26,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:name=".Application.AppApplication"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+       >  <!--关闭硬件加速,开启的话可能会对动画有影响-->
         <activity android:name=".Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -13,9 +13,10 @@ import webapps.MOrangeCheck.com.Fragment.Company.Examine.ExamineItemDetail;
 import webapps.MOrangeCheck.com.Fragment.Company.Report.Arrange;
 import webapps.MOrangeCheck.com.Fragment.Company.Report.ChoiceMonth;
 import webapps.MOrangeCheck.com.Fragment.Company.Report.Report;
-import webapps.MOrangeCheck.com.Fragment.Company.Report.ReportDetail;
+import webapps.MOrangeCheck.com.Fragment.Company.Report.ReportMore;
 import webapps.MOrangeCheck.com.Fragment.Company.Report.ReportItemDetatil;
 import webapps.MOrangeCheck.com.Fragment.MeetingPlace.MeetingPlace;
+import webapps.MOrangeCheck.com.Fragment.MeetingPlace.SmartNavigation.NagationSetting;
 import webapps.MOrangeCheck.com.Fragment.MeetingPlace.SmartNavigation.SmartNaigation;
 import webapps.MOrangeCheck.com.R;
 
@@ -41,9 +42,12 @@ public class DetailActivity extends BaseActivity {
     public final static int FRAGMENT_EXAMINEITEMDETAIL = 14;//申请,审批,抄送子列表的item的详情
 
 
+
     //会议部分
-    public final static int FRAGMENT_MEETINGPLACEFRAGMENT = 50;//会议主页
-    public final static int FRAGMENT_SMARTNAIGATION = 51;//智能导览
+    public final static int FRAGMENT_MEETINGPLACEFRAGMENT = 100;//会议主页
+    public final static int FRAGMENT_SMARTNAIGATION = 101;//智能导览
+    public final static int FRAGMENT_NAGATIONSETTING = 102;//只能导览设定
+
 
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
@@ -75,7 +79,7 @@ public class DetailActivity extends BaseActivity {
                 replaceFragment(new ReportItemDetatil());
                 break;
             case FRAGMENT_REPORTDETAIL:
-                replaceFragment(new ReportDetail());
+                replaceFragment(new ReportMore());
                 break;
             case FRAGMENT_MEETINGPLACEFRAGMENT:
                 replaceFragment(new MeetingPlace());
@@ -94,6 +98,9 @@ public class DetailActivity extends BaseActivity {
                 break;
             case FRAGMENT_SMARTNAIGATION:
                 replaceFragment(new SmartNaigation());
+                break;
+            case FRAGMENT_NAGATIONSETTING:
+                replaceFragment(new NagationSetting());
                 break;
         }
 

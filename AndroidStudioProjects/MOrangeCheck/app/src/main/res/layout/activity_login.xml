@@ -40,7 +40,9 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
+            android:visibility="visible"
             android:background="@drawable/shadow" />
+
 
 
         <RelativeLayout

@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
@@ -26,7 +25,6 @@ import java.util.List;
 
 import ImageLoaderUtil.ImageLoaderUtil;
 import cn.qqtheme.framework.picker.FilePicker;
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import ppg.com.yanlibrary.fragment.LoadingFragment;
 import ppg.com.yanlibrary.utils.ToastUtil;
 import ppg.com.yanlibrary.widget.recyclerview.CommonAdapter;
@@ -40,7 +38,7 @@ import webapps.MOrangeCheck.com.Bean.FileBean;
 import webapps.MOrangeCheck.com.R;
 import webapps.MOrangeCheck.com.Tool.LeftPaddingDividerItemDecoration;
 import webapps.MOrangeCheck.com.Tool.MyIntent;
-import webapps.MOrangeCheck.com.Views.ExaminChoiceManDialog;
+import webapps.MOrangeCheck.com.Views.dialog.ExaminChoiceManDialog;
 import webapps.MOrangeCheck.com.databinding.DialogExamineChioceManBinding;
 import webapps.MOrangeCheck.com.databinding.FragmentCommonTimeApplyBinding;
 import webapps.MOrangeCheck.com.databinding.ItemFileLayoutBinding;
@@ -344,10 +342,9 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
         chioceManBinding.recyclerView.addItemDecoration(new LeftPaddingDividerItemDecoration(mActivity
                 , LeftPaddingDividerItemDecoration.VERTICAL, 12));
         chioceManBinding.recyclerView.setAdapter(adapter);
-        final ExaminChoiceManDialog choiceManDialog = new ExaminChoiceManDialog(mActivity, dialog);
-        choiceManDialog.setListener(new View.OnClickListener() {
+        final ExaminChoiceManDialog choiceManDialog = new ExaminChoiceManDialog(mActivity, dialog) {
             @Override
-            public void onClick(View v) {
+            public void determineTask() {
                 //当已选择的list有数据时,清空除了+号按钮的所有view并清空Choicelist
                 if (Choicelist.size() > 0) {
                     binding.layoutExamineApplyMan.llExamineMan.removeViews(0,
@@ -361,11 +358,11 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
                     }
                 }
                 initChoiceLayout(Choicelist, flag);
-                choiceManDialog.dismiss();
             }
-        });
-        choiceManDialog.show();
+        };
         choiceManDialog.getTv_title().setText("选择审批人");
+        choiceManDialog.show();
+
 
     }
 
@@ -435,10 +432,9 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
                 , LeftPaddingDividerItemDecoration.VERTICAL, 10));
 
         chioceManBinding.recyclerView.setAdapter(adapter2);
-        final ExaminChoiceManDialog choiceManDialog = new ExaminChoiceManDialog(mActivity, dialog);
-        choiceManDialog.setListener(new View.OnClickListener() {
+        final ExaminChoiceManDialog choiceManDialog = new ExaminChoiceManDialog(mActivity, dialog) {
             @Override
-            public void onClick(View v) {
+            public void determineTask() {
 
                 if (Choicelist2.size() > 0) {
                     binding.layoutExamineApplyCopy.llExamineMan.removeViews(0,
@@ -452,12 +448,11 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
                 }
 
                 initChoiceLayout(Choicelist2, flag);
-                choiceManDialog.dismiss();
             }
-        });
-        //  choiceManDialog.setCanceledOnTouchOutside(false);
-        choiceManDialog.show();
+        };
         choiceManDialog.getTv_title().setText("选择抄送人");
+        choiceManDialog.show();
+
 
     }
 

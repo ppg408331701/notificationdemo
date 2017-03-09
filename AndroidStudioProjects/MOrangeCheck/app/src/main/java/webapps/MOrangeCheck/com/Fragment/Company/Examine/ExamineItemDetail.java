@@ -1,5 +1,6 @@
 package webapps.MOrangeCheck.com.Fragment.Company.Examine;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -15,17 +16,16 @@ import java.util.List;
 import java.util.Map;
 
 import ppg.com.yanlibrary.fragment.LoadingFragment;
-import ppg.com.yanlibrary.utils.ToastUtil;
 import ppg.com.yanlibrary.widget.recyclerview.CommonAdapter;
 import ppg.com.yanlibrary.widget.recyclerview.ViewHolder;
 import utils.ConvertUtils;
-import utils.IntentUtils;
 import utils.TimeUtils;
 import webapps.MOrangeCheck.com.Bean.FileBean;
 import webapps.MOrangeCheck.com.Bean.TimelineBean;
 import webapps.MOrangeCheck.com.R;
 import webapps.MOrangeCheck.com.Views.LineType;
 import webapps.MOrangeCheck.com.Views.TimelineView;
+import webapps.MOrangeCheck.com.Views.dialog.ExamineBottomDialog;
 import webapps.MOrangeCheck.com.databinding.FragmentExamintitemDetailBinding;
 import webapps.MOrangeCheck.com.databinding.ItemFileLayoutBinding;
 
@@ -34,7 +34,7 @@ import webapps.MOrangeCheck.com.databinding.ItemFileLayoutBinding;
  * Created by ppg777 on 2017/3/3.
  */
 
-public class ExamineItemDetail extends LoadingFragment {
+public class ExamineItemDetail extends LoadingFragment implements View.OnClickListener {
 
     FragmentExamintitemDetailBinding binding;
     private List<TimelineBean> list = new ArrayList<>();
@@ -76,6 +76,45 @@ public class ExamineItemDetail extends LoadingFragment {
 
     }
 
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        final ExamineBottomDialog bottomDialog;
+        switch (v.getId()) {
+            case R.id.ll_ok:
+                bottomDialog = new ExamineBottomDialog(mActivity) {
+                    @Override
+                    public void determineTask() {
+
+                    }
+                };
+                break;
+            case R.id.ll_no:
+                bottomDialog = new ExamineBottomDialog(mActivity) {
+                    @Override
+                    public void determineTask() {
+
+                    }
+                };
+                break;
+            case R.id.ll_pass:
+                bottomDialog = new ExamineBottomDialog(mActivity) {
+                    @Override
+                    public void determineTask() {
+
+                    }
+                };
+                break;
+            case R.id.ll_note:
+                bottomDialog = new ExamineBottomDialog(mActivity) {
+                    @Override
+                    public void determineTask() {
+
+                    }
+                };
+                break;
+        }
+    }
 
     /**
      * 加载时间线
@@ -190,4 +229,6 @@ public class ExamineItemDetail extends LoadingFragment {
         }
         return R.mipmap.file_jpg;
     }
+
+
 }

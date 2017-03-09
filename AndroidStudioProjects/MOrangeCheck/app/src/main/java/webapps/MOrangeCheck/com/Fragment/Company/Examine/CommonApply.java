@@ -28,7 +28,7 @@
 //import webapps.MOrangeCheck.com.R;
 //import webapps.MOrangeCheck.com.Tool.LT;
 //import webapps.MOrangeCheck.com.Tool.LeftPaddingDividerItemDecoration;
-//import webapps.MOrangeCheck.com.Views.ExaminChoiceManDialog;
+//import webapps.MOrangeCheck.com.Views.dialog.ExaminChoiceManDialog;
 //import webapps.MOrangeCheck.com.databinding.DialogExamineChioceManBinding;
 //import webapps.MOrangeCheck.com.databinding.FragmentCommonApplyBinding;
 //import webapps.MOrangeCheck.com.databinding.ItemFileLayoutBinding;

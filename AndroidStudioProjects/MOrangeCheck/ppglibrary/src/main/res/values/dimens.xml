@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources>
+
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
+    <dimen name="spot_progress_spot_size">6dp</dimen>
+    <dimen name="spot_progress_margin">24dp</dimen>
+    <dimen name="spot_progress_width">250dp</dimen>
+    <dimen name="alert_width">290dp</dimen>
+    <dimen name="common_circle_width">3dp</dimen>
+    <dimen name="progress_circle_radius">34dp</dimen>
+    <dimen name="Operation_L1">50dp</dimen>
+
+    <dimen name="category_frame_h">250dp</dimen>
+    <dimen name="carView_margin">0dp</dimen>
+
+    <dimen name="fragment_setting_space">13dp</dimen>
+
+    <dimen name="button_h">45dp</dimen>
+    <dimen name="votes_list_item_h">110dp</dimen>
+    <dimen name="votes_list_item_h1">90dp</dimen>
+    <dimen name="votes_list_item_h3">95dp</dimen>
+    <dimen name="votes_list_item_h2">70dp</dimen>
+    <dimen name="member_padding">9dp</dimen>
+    <dimen name="main_icon_wh">50dp</dimen>
+
+    <dimen name="map_icon_h">30dp</dimen>
+    <dimen name="map_icon_w">35dp</dimen>
+
+    <dimen name="cursor_horizontal_scrollview_h">50dp</dimen>
+
+    <dimen name="thumbnail_h">90dp</dimen>
+    <dimen name="thumbnail_h2">75dp</dimen>
+    <dimen name="thumbnail_h1">70dp</dimen>
+    <dimen name="thumbnail_w">100dp</dimen>
+    <dimen name="thumbnail_w0">90dp</dimen>
+    <dimen name="thumbnail_w1">100dp</dimen>
+    <dimen name="thumbnail_w2">120dp</dimen>
+    <dimen name="thumbnail_w3">110dp</dimen>
+    <dimen name="thumbnail_w4">83dp</dimen>
+
+    <dimen name="bottom_meun_h">50dp</dimen>
+    <dimen name="top_bar_chunk_space">4dp</dimen>
+    <dimen name="bottom_button_h">45dp</dimen>
+    <dimen name="txt_interval">15dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="icon_size_bottom_hw">27dp</dimen>
+    <dimen name="icon_size_nav_back_h">18.5dp</dimen>
+    <dimen name="icon_size_nav_back_w">50dp</dimen>
+    <dimen name="icon_size_nav_home_h">30.5dp</dimen>
+    <dimen name="icon_size_nav_home_w">55dp</dimen>
+    <dimen name="padding_5">5dp</dimen>
+    <dimen name="padding_0_5">0.5dp</dimen>
+    <dimen name="padding_0">0dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="padding_medium">6dp</dimen>
+    <dimen name="padding_small">6dp</dimen>
+    <dimen name="padding_1">1dp</dimen>
+    <dimen name="padding_11">11dp</dimen>
+    <dimen name="padding_25">25dp</dimen>
+    <dimen name="padding_2">2dp</dimen>
+    <dimen name="padding_3">3dp</dimen>
+    <dimen name="text_size_head_title">18sp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="text_small_size">12sp</dimen>
+    <dimen name="widget_size_mainListItem_image1_wh">197.5dp</dimen>
+    <dimen name="widget_size_main_bottom_menu_height">50dp</dimen>
+    <dimen name="widget_size_main_header_menu_h">100dp</dimen>
+    <dimen name="widget_size_main_viewpager_h">140dp</dimen>
+    <dimen name="widget_size_nav_height">55dp</dimen>
+    <dimen name="widget_size_nav_height_space1">43.5dp</dimen>
+    <dimen name="widget_size_nav_height_space2">50dp</dimen>
+    <dimen name="widget.size_nav_heigh_space3">36.5dp</dimen>
+    <!-- 稍微大一点 -->
+    <dimen name="text_small1_size">13dp</dimen>
+    <!-- 表单显示区，单个显示元素的高 -->
+    <dimen name="area_item_h">50dp</dimen>
+    <!-- 表单显示区，单个元素的左右padding -->
+    <dimen name="area_padding_lr">12dp</dimen>
+    <!-- 更宽一些 -->
+    <dimen name="area_padding_lr1">15dp</dimen>
+    <dimen name="ic_size_next_w">16dp</dimen>
+    <!-- next图标尺寸 -->
+    <dimen name="ic_size_next_h">16dp</dimen>
+    <dimen name="text_meddium_size">16sp</dimen>
+    <dimen name="nav_height">46dp</dimen>
+    <dimen name="nav_back_btn_width">44dp</dimen>
+    <dimen name="nav_back_btn_height">44dp</dimen>
+    <dimen name="nav_back_btn_image_width">25dp</dimen>
+    <dimen name="nav_back_btn_image_height">21dp</dimen>
+    <dimen name="nav_title_text_size">20sp</dimen>
+    <dimen name="common_padding">10dp</dimen>
+    <dimen name="common_row_height">50dp</dimen>
+    <dimen name="common_row_text_size">18sp</dimen>
+    <dimen name="business_detail_next_image_width">16dp</dimen>
+    <dimen name="business_detail_next_image_height">16dp</dimen>
+
+    <!-- 登陆 -->
+    <dimen name="edit_view_radius">3.0dip</dimen>
+    <dimen name="login_picture_height">80.0dp</dimen>
+    <dimen name="login_input_height_et">50.0dp</dimen>
+    <dimen name="login_btn_height">38.0dip</dimen>
+    <!-- 注册界面，组件的左右边距 -->
+    <dimen name="reg_relative_padding">25.0dip</dimen>
+    <!-- 注册界面，组件的上边距 -->
+    <dimen name="reg_compt_margin_top">30.0dip</dimen>
+    <dimen name="grab_votes_text_height">30.0dip</dimen>
+    <dimen name="app_vertical_margin">8.0dip</dimen>
+    <dimen name="app_horizontal_margin">5.0dip</dimen>
+    <dimen name="search_bar_edit_view_radius">20.0dip</dimen>
+    <dimen name="btn_login_height">38.0dip</dimen>
+    <dimen name="table_row_margin">3.5dip</dimen>
+    <!-- 抢票列表的活动标题字体大小 -->
+    <dimen name="text_size_votes_title">17.0sp</dimen>
+
+    <dimen name="button_red_h">50dp</dimen>
+
+    <dimen name="icon_hw">30dp</dimen>
+
+
+    <dimen name="text_size_normal_center">14sp</dimen>
+
+    <dimen name="top_bar_h">45dp</dimen>
+    <dimen name="bottom_menu_h">55dp</dimen>
+
+    <dimen name="text_sign_title">19sp</dimen>
+
+    <dimen name="text_sign_title2">16sp</dimen>
+    <dimen name="text_list_title">15sp</dimen>
+    <dimen name="edittext_size_normal">14sp</dimen>
+    <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_small2">11sp</dimen>
+    <dimen name="icon_size_bottom_w">26.5dp</dimen>
+    <dimen name="icon_size_bottom_h">28dp</dimen>
+
+    <!-- material_edtittext -->
+    <dimen name="default_padding_top">8dp</dimen>
+    <dimen name="default_padding_bottom">8dp</dimen>
+    <dimen name="inner_padding_left">0dp</dimen>
+    <dimen name="inner_padding_right">0dp</dimen>
+    <dimen name="floating_label_text_size">12sp</dimen>
+    <dimen name="bottom_text_size">12sp</dimen>
+    <dimen name="inner_components_spacing">8dp</dimen>
+    <dimen name="bottom_ellipsis_height">4dp</dimen>
+
+    <dimen name="ksw_md_thumb_ripple_size">42dp</dimen>
+    <dimen name="ksw_md_thumb_solid_inset">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset_top">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset_bottom">10dp</dimen>
+
+    <dimen name="ksw_md_thumb_solid_size">20dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_size">21dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_offset">2dp</dimen>
+</resources>

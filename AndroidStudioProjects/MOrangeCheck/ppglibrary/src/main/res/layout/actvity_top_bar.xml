@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--android:id="@+id/top_bar_root"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:background="@color/bg" >-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000">
+
+    <FrameLayout
+        android:id="@+id/top_bar_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/detail_top_bar"
+            layout="@layout/widget_activity_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/top_bar_h" />
+
+        <FrameLayout
+            android:id="@+id/detail_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/top_bar_h"
+            android:background="@color/white2">
+
+
+        </FrameLayout>
+
+
+
+        <View
+            android:id="@+id/detail_top_bar_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="@dimen/top_bar_h"
+            android:background="@drawable/shadow"
+            android:visibility="visible" />
+
+
+
+    </FrameLayout>
+</FrameLayout>

@@ -1,13 +1,11 @@
 package webapps.MOrangeCheck.com.Views;
 
 import android.animation.ValueAnimator;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -16,13 +14,14 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import webapps.MOrangeCheck.com.R;
-import webapps.MOrangeCheck.com.Tool.LT;
 
 /**
  * Created by ppg on 16/9/2 19:28
@@ -100,7 +99,7 @@ public class CircularProgressar extends View {
     //左边文字
     private String LeftText = "45%";
 
-    //小圆点
+    //图片
     private Bitmap bitmap;
 
     //当前点的实际位置
@@ -195,7 +194,7 @@ public class CircularProgressar extends View {
         mBitmapPaint.setAntiAlias(true);
 
         //初始化小圆点图片
-        bitmap = BitmapFactory.decodeResource(getResources(), io.netopen.hotbitmapgg.view.R.drawable.ic_circle);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.arrows);
         pos = new float[2];
         tan = new float[2];
         matrix = new Matrix();
@@ -231,23 +230,25 @@ public class CircularProgressar extends View {
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-
         super.onSizeChanged(w, h, oldw, oldh);
         maxWidth = w;
         maxHeight = h;
         width = circularSize;
         height = circularSize;
         radius = width / 2;
-        LT.ee("maxWidth=" + maxWidth);
-        LT.ee("maxHeight=" + maxHeight);
-        LT.ee("radius=" + radius);
-        LT.ee("circularSize=" + circularSize);
-
+//        LT.ee("maxWidth=" + maxWidth);
+//        LT.ee("maxHeight=" + maxHeight);
+//        LT.ee("radius=" + radius);
+//        LT.ee("circularSize=" + circularSize);
         mMiddleRect = new RectF((maxWidth / 2) - radius, (maxHeight / 2) - radius, (maxWidth / 2)
                 + radius, (maxHeight / 2) + radius);
 
         mMiddleProgressRect = new RectF((maxWidth / 2) - radius, (maxHeight / 2) - radius, (maxWidth / 2)
                 + radius, (maxHeight / 2) + radius);
+        //********************波纹圆*************************
+        if (!mMaxRadiusSet) {
+            mMaxRadius = Math.min(w, h) * mMaxRadiusRate / 2.0f;
+        }
     }
 
 
@@ -263,6 +264,32 @@ public class CircularProgressar extends View {
         drawLeftText(canvas);
 
         drawRightText(canvas);
+
+
+        //*******************波纹圆*********************
+        Iterator<Circle> iterator = mCircleList.iterator();
+        while (iterator.hasNext()) {
+            Circle circle = iterator.next();
+            float radius = circle.getCurrentRadius();
+            if (System.currentTimeMillis() - circle.mCreateTime < mDuration) {
+                mPaint.setAlpha(circle.getAlpha());
+                canvas.drawCircle(getWidth() / 2, getHeight() / 2, radius, mPaint);
+            } else {
+                iterator.remove();
+            }
+        }
+        if (mCircleList.size() > 0) {
+            postInvalidateDelayed(10);
+        }
+        drawBitMap(canvas);
+    }
+
+    private void drawBitMap(Canvas canvas) {
+//        // 将画布坐标系移动到画布中央
+//        canvas.translate(maxWidth / 2 - bitmap.getWidth() / 2, maxHeight / 2 - bitmap.getHeight() / 2);
+        canvas.drawBitmap(bitmap,maxWidth / 2- dp2px(5) - bitmap.getWidth()
+                / 2, maxHeight / 2 - bitmap.getHeight() / 2, new Paint());
+
     }
 
     private void drawRightText(Canvas canvas) {
@@ -271,11 +298,11 @@ public class CircularProgressar extends View {
 
         //公司自定义
         String[] text1 = RightText.split("/");
-        LeftTextPaint.setColor(frontLineColor);
+        RightTextPaint.setColor(frontLineColor);
         canvas.drawText(text1[0] + "/", (maxWidth / 2) + (radius + dp2px(23)), (maxHeight / 2), LeftTextPaint);
-        LeftTextPaint.setColor(backgroundLineColor);
+        RightTextPaint.setColor(backgroundLineColor);
         //获取/前的字符串
-        float LeftTextwidth = LeftTextPaint.measureText(text1[0]);
+        float LeftTextwidth = RightTextPaint.measureText(text1[0]);
         canvas.drawText(text1[1], (maxWidth / 2) + (radius + dp2px(27)+LeftTextwidth), (maxHeight / 2), LeftTextPaint);
     }
 
@@ -311,7 +338,6 @@ public class CircularProgressar extends View {
      * 绘制外层圆环
      */
     private void drawMiddleArc(Canvas canvas) {
-        canvas.drawColor(Color.RED);
         canvas.drawArc(mMiddleRect, mStartAngle, mEndAngle, false, mMiddleArcPaint);
     }
 
@@ -369,14 +395,120 @@ public class CircularProgressar extends View {
         return (int) (values * density + 0.5f);
     }
 
+    //*************************************波纹圆*****************************************
+
+    private Interpolator mInterpolator = new LinearInterpolator();
+
+    private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private float mInitialRadius;   // 初始波纹半径
+    private float mMaxRadius;   // 最大波纹半径
+    private long mDuration = 2000; // 一个波纹从创建到消失的持续时间
+    private int mSpeed = 500;   // 波纹的创建速度，每500ms创建一个
+    private float mMaxRadiusRate = 1.1f;
+    private boolean mMaxRadiusSet;
+
+    private boolean mIsRunning;
+    private long mLastCreateTime;
+    private List<Circle> mCircleList = new ArrayList<Circle>();
+
+    private Runnable mCreateCircle = new Runnable() {
+        @Override
+        public void run() {
+            if (mIsRunning) {
+                newCircle();
+                postDelayed(mCreateCircle, mSpeed);
+            }
+        }
+    };
+
+    public void setMaxRadiusRate(float maxRadiusRate) {
+        mMaxRadiusRate = maxRadiusRate;
+    }
+
+    public void setColor(int color) {
+        mPaint.setColor(color);
+    }
 
     /**
-     * 获取当前时间
+     * 开始
      */
-    public String getCurrentTime() {
+    public void start() {
+        if (!mIsRunning) {
+            mIsRunning = true;
+            mCreateCircle.run();
+        }
+    }
 
-        @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat format = new SimpleDateFormat("yyyy:MM:dd");
-        return format.format(new Date());
+    public void setStyle(Paint.Style style) {
+        mPaint.setStyle(style);
+    }
+
+    /**
+     * 缓慢停止
+     */
+    public void stop() {
+        mIsRunning = false;
+    }
+
+    /**
+     * 立即停止
+     */
+    public void stopImmediately() {
+        mIsRunning = false;
+        mCircleList.clear();
+        invalidate();
+    }
+
+    public void setInitialRadius(float radius) {
+        mInitialRadius = radius;
+    }
+
+    public void setDuration(long duration) {
+        mDuration = duration;
+    }
+
+    public void setMaxRadius(float maxRadius) {
+        mMaxRadius = maxRadius;
+        mMaxRadiusSet = true;
+    }
+
+    public void setSpeed(int speed) {
+        mSpeed = speed;
+    }
+
+    private void newCircle() {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - mLastCreateTime < mSpeed) {
+            return;
+        }
+        Circle circle = new Circle();
+        mCircleList.add(circle);
+        invalidate();
+        mLastCreateTime = currentTime;
+    }
+
+    private class Circle {
+        private long mCreateTime;
+
+        Circle() {
+            mCreateTime = System.currentTimeMillis();
+        }
+
+        int getAlpha() {
+            float percent = (getCurrentRadius() - mInitialRadius) / (mMaxRadius - mInitialRadius);
+            return (int) (255 - mInterpolator.getInterpolation(percent) * 255);
+        }
+
+        float getCurrentRadius() {
+            float percent = (System.currentTimeMillis() - mCreateTime) * 1.0f / mDuration;
+            return mInitialRadius + mInterpolator.getInterpolation(percent) * (mMaxRadius - mInitialRadius);
+        }
+    }
+
+    public void setInterpolator(Interpolator interpolator) {
+        mInterpolator = interpolator;
+        if (mInterpolator == null) {
+            mInterpolator = new LinearInterpolator();
+        }
     }
 }

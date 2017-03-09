@@ -1,0 +1,146 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/top_navigate"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/top_bar_h"
+    android:background="@color/backgroud_theme"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/NavigateBackLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+
+        <ImageView
+            android:id="@+id/NavigateOperation_L1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:clickable="false"
+            android:scaleType="centerInside"
+            android:src="@drawable/left_arrow"
+            android:visibility="visible" />
+
+
+        <TextView
+            android:id="@+id/NavigateOperation_L2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:clickable="false"
+            android:gravity="center"
+            android:paddingLeft="12.5dp"
+            android:paddingRight="12.5dp"
+            android:text=""
+            android:textColor="@color/white0"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/NavigateTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="75dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_head_title" />
+
+
+    <Button
+        android:id="@+id/NavigateOperation_R4"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="2dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/shape_oval"
+        android:clickable="true"
+        android:scaleType="center"
+        android:text="111"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/NavigateHomeLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/NavigateOperation_R4"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/NavigateOperation_R3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/NavigateOperation_R2"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:scaleType="center"
+            android:textColor="@color/white0"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/NavigateRightLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/NavigateOperation_R4"
+        android:layout_gravity="center_vertical"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/NavigateOperation_R5"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:clickable="false"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/NavigateOperation_R6"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:paddingRight="15dp"
+            android:text="确定"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -16,19 +16,15 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-import ImageLoaderUtil.ImageLoaderUtil;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import ppg.com.yanlibrary.fragment.LoadingFragment;
 import q.rorbin.badgeview.Badge;
 import q.rorbin.badgeview.QBadgeView;
-import utils.ConvertUtils;
 import utils.ScreenUtils;
-import utils.ToastUtils;
 import webapps.MOrangeCheck.com.Activity.DetailActivity;
 import webapps.MOrangeCheck.com.R;
 import webapps.MOrangeCheck.com.Tool.IntentTool;
-import webapps.MOrangeCheck.com.Tool.LT;
-import webapps.MOrangeCheck.com.Views.TopDialogUtils;
+import webapps.MOrangeCheck.com.Views.dialog.TopDialogUtils;
 import webapps.MOrangeCheck.com.databinding.FragmentCompanyhomepageBinding;
 import webapps.MOrangeCheck.com.databinding.ItemCheckpointBinding;
 import webapps.MOrangeCheck.com.databinding.ItemFuncationBinding;
@@ -220,18 +216,15 @@ public class CompanyHomePage extends LoadingFragment implements View.OnClickList
             itemCheckpointBinding.llCheckPoint.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                     final TopDialogUtils dialogUtils = new TopDialogUtils(mActivity);
-                    dialogUtils.setListener(new View.OnClickListener() {
+                    final TopDialogUtils dialogUtils = new TopDialogUtils(mActivity) {
                         @Override
-                        public void onClick(View v) {
+                        public void determineTask() {
                             itemCheckpointBinding.ivCheckpoint.setImageResource(R.mipmap.fingerprintok);
-                            dialogUtils.dismiss();
                         }
-                    });
-                    dialogUtils.show();
+                    };
                     dialogUtils.getTv_title().setText("打卡");
                     dialogUtils.getContent_text().setText("不在打卡时间范围内,是否打卡?");
-
+                    dialogUtils.show();
                 }
             });
             binding.llCheck.addView(chcekTimeItem);

@@ -23,6 +23,7 @@
                 android:layout_height="10dp" />
 
             <LinearLayout
+                android:background="@color/white0"
                 android:id="@+id/ll_funcation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

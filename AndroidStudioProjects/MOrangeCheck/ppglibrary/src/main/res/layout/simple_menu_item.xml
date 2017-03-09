@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_layout_menu_item_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/padding_2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/widget_layout_menu_image"
+                    android:layout_width="@dimen/icon_size_bottom_hw"
+                    android:layout_height="@dimen/icon_size_bottom_hw"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_android" />
+
+                <TextView
+                    android:id="@+id/widget_layout_menu_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:clickable="false"
+                    android:text="精选"
+                    android:layout_below="@id/widget_layout_menu_image"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/text_size_14" />
+
+                <ImageView
+                    android:id="@+id/widget_layout_menu_red_point"
+                    android:layout_width="6dp"
+                    android:layout_height="6dp"
+                    android:visibility="gone"
+                    android:layout_alignRight="@id/widget_layout_menu_image"
+                    android:src="@drawable/design_red_point"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+
+
+</FrameLayout>

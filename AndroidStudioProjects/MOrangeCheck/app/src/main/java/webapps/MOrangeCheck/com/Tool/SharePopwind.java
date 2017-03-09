@@ -8,8 +8,7 @@ import android.view.View;
 import android.widget.PopupWindow;
 
 
-import ppg.com.yanlibrary.utils.ToastUtil;
-import webapps.MOrangeCheck.com.Views.ShareModalDialog;
+import webapps.MOrangeCheck.com.Views.dialog.ShareModalDialog;
 
 /**
  * Created by ppg on 2016/7/20.

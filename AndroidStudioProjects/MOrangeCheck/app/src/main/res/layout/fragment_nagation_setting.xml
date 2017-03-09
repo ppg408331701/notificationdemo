@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout style="@style/RelativeLayout_item2">
+
+        <TextView
+            style="@style/item_text"
+            android:text="广播时间" />
+
+        <TextView
+            style="@style/item_right_text"
+            android:text="30毫米"
+            android:textColor="@color/gray5" />
+
+        <ImageView style="@style/ArrowRight" />
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/backgroud_theme" />
+
+    <RelativeLayout style="@style/RelativeLayout_item2">
+
+        <TextView
+            style="@style/item_text"
+            android:text="广播距离" />
+
+        <TextView
+            style="@style/item_right_text"
+            android:text="30毫米"
+            android:textColor="@color/gray5" />
+
+        <ImageView style="@style/ArrowRight" />
+
+
+    </RelativeLayout>
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <RelativeLayout style="@style/RelativeLayout_item2">
+
+        <TextView
+            style="@style/item_text"
+            android:text="使用帮助" />
+
+
+        <ImageView style="@style/ArrowRight" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>
