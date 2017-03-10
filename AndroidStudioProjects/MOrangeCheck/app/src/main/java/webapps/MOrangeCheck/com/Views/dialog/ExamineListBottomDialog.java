@@ -2,48 +2,53 @@ package webapps.MOrangeCheck.com.Views.dialog;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.flyco.dialog.utils.CornerUtils;
 import com.flyco.dialog.widget.base.BaseDialog;
 
 import webapps.MOrangeCheck.com.R;
+import webapps.MOrangeCheck.com.Tool.LeftPaddingDividerItemDecoration;
 
 /**
- * 选择审批人
- * Created by ppg777 on 2017/3/1.
+ * Created by ppg777 on 2017/3/9.
  */
 
-public abstract class ExaminChoiceManDialog extends BaseDialog<ExaminChoiceManDialog> {
+public abstract class ExamineListBottomDialog extends BaseDialog<ExamineListBottomDialog> {
 
-    private TextView tv_title;
     private TextView cancel_button;
     private TextView ok_button;
+    private EditText content_edittext;
+    private View.OnClickListener listener;
+    private TextView tv_title;
+
     private View root;
 
-
-    public ExaminChoiceManDialog(Context context) {
+    public ExamineListBottomDialog(Context context) {
         super(context);
     }
-
-    public ExaminChoiceManDialog(Context context, View root) {
+    public ExamineListBottomDialog(Context context,View root) {
         super(context);
-        this.root = root;
-
+        this.root=root;
     }
-
 
     @Override
     public View onCreateView() {
         widthScale(0.85f);
         heightScale(0.7f);
         // dismissAnim(this, new ZoomOutExit());
-        tv_title = (TextView) root.findViewById(R.id.tv_title);
+//        View inflate = View.inflate(mContext, R.layout.dialog_examinebottom, null);
+        content_edittext = (EditText) root.findViewById(R.id.content_edittext);
         cancel_button = (TextView) root.findViewById(R.id.cancel_button);
         ok_button = (TextView) root.findViewById(R.id.ok_button);
-        root.setBackground(CornerUtils.cornerDrawable(Color.parseColor("#ffffff"), dp2px(7)));
+        tv_title = (TextView) root.findViewById(R.id.tv_title);
 
+        root.setBackground(CornerUtils.cornerDrawable(Color.parseColor("#ffffff"), dp2px(7)));
         return root;
     }
 
@@ -51,15 +56,9 @@ public abstract class ExaminChoiceManDialog extends BaseDialog<ExaminChoiceManDi
         return tv_title;
     }
 
-    public TextView getCancel_button() {
-        return cancel_button;
+    public EditText getContent_edittext() {
+        return content_edittext;
     }
-
-    public TextView getOk_button() {
-        return ok_button;
-    }
-
-
 
     @Override
     public void setUiBeforShow() {
@@ -73,11 +72,15 @@ public abstract class ExaminChoiceManDialog extends BaseDialog<ExaminChoiceManDi
         ok_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                determineTask();
+                determineTask(content_edittext);
                 dismiss();
             }
         });
     }
 
-    public abstract void determineTask();
+
+
+
+    public abstract void determineTask(EditText text);
+
 }

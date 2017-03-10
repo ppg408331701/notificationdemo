@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.support.multidex.MultiDexApplication;
 
 
 import com.bilibili.boxing.BoxingCrop;
@@ -31,7 +32,7 @@ import webapps.MOrangeCheck.com.Tool.BoxingUcrop;
  * Created by ppg on 2016/10/13.
  */
 
-public class AppApplication extends Application {
+public class AppApplication extends MultiDexApplication {
 
     private static int navigationHeight;
 

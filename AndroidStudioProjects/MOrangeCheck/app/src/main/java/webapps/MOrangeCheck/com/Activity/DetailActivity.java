@@ -10,6 +10,7 @@ import webapps.MOrangeCheck.com.Fragment.Company.Examine.CommonTimeApply;
 import webapps.MOrangeCheck.com.Fragment.Company.Examine.Examine;
 import webapps.MOrangeCheck.com.Fragment.Company.Examine.ExamineBasePag;
 import webapps.MOrangeCheck.com.Fragment.Company.Examine.ExamineItemDetail;
+
 import webapps.MOrangeCheck.com.Fragment.Company.Report.Arrange;
 import webapps.MOrangeCheck.com.Fragment.Company.Report.ChoiceMonth;
 import webapps.MOrangeCheck.com.Fragment.Company.Report.Report;
@@ -102,6 +103,7 @@ public class DetailActivity extends BaseActivity {
             case FRAGMENT_NAGATIONSETTING:
                 replaceFragment(new NagationSetting());
                 break;
+
         }
 
     }

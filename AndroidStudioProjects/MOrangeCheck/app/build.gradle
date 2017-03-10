@@ -9,6 +9,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -25,6 +26,7 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
+
 }
 
 dependencies {
@@ -34,6 +36,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
+    compile 'com.android.support:multidex:1.0.1'
     testCompile 'junit:junit:4.12'
     //主要依赖包
     compile project(':ppglibrary')
@@ -43,7 +46,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.6.2'
     //假期半弧进度条
     compile project(':view')
-
     //可拖拽消除的view
     compile 'q.rorbin:badgeview:1.0.6'
     //图片选择器
@@ -58,7 +60,6 @@ dependencies {
     compile 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:1.4.3'
     //时间选择器
     compile 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
-    //时间线
-    compile 'com.xyz.step:step:1.0.4'
+    compile 'com.bm.photoview:library:1.4.1'
 
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         xmlns:tools="http://schemas.android.com/tools"
@@ -20,7 +21,6 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/item_padding_left"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:text="审批人" />
 
             <TextView
@@ -29,35 +29,49 @@
                 android:text="(点击头像可删除)"
                 android:textColor="@color/gray5"
                 android:paddingLeft="10dp"
+                android:paddingTop="10dp"
                 android:textSize="10sp" />
 
 
         </LinearLayout>
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:fillViewport="true">
+        <!--<HorizontalScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:fillViewport="true">-->
 
-            <LinearLayout
+        <webapps.MOrangeCheck.com.Views.WarpLinearLayout
                 android:id="@+id/ll_examine_man"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:grivate="left"
+            app:horizontal_Space="0dp"
+            app:isFull="false"
+            app:vertical_Space="5dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
+            <FrameLayout
+                android:id="@+id/man_iv_addimg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
                 <ImageView
-                    android:id="@+id/man_iv_addimg"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_gravity="left|center_vertical"
                     android:src="@mipmap/examine_addimg"/>
+            </FrameLayout>
 
-            </LinearLayout>
 
-        </HorizontalScrollView>
+        </webapps.MOrangeCheck.com.Views.WarpLinearLayout>
+
+        <!--</HorizontalScrollView>-->
 
 
     </LinearLayout>

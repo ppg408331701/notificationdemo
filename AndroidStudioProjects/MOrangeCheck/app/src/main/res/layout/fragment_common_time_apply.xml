@@ -6,40 +6,54 @@
         android:layout_height="match_parent"
         android:fillViewport="true">
 
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/content_fragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/backgroud_theme"
-            android:orientation="vertical">
-
-            <include
-                android:id="@+id/layout_common_apply_edit"
-                layout="@layout/layout_common_apply_edit" />
-
-            <Space
+            android:layout_height="match_parent">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="10dp" />
+                android:layout_height="match_parent"
+                android:background="@color/backgroud_theme"
+                android:orientation="vertical">
 
-            <include
-                android:id="@+id/layout_examine_apply_time"
-                layout="@layout/layout_examine_apply_time" />
+                <include
+                    android:id="@+id/layout_common_apply_edit"
+                    layout="@layout/layout_common_apply_edit" />
 
 
 
-            <include android:id="@+id/layout_examine_apply_man"
-                layout="@layout/layout_examine_apply_man" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="10dp" />
+                <include
+                    android:id="@+id/layout_examine_apply_time"
+                    layout="@layout/layout_examine_apply_time" />
 
-            <include android:id="@+id/layout_examine_apply_copy"
-                layout="@layout/layout_examine_apply_copy" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-        </LinearLayout>
+
+                <include android:id="@+id/layout_examine_apply_man"
+                    layout="@layout/layout_examine_apply_man" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <include android:id="@+id/layout_examine_apply_copy"
+                    layout="@layout/layout_examine_apply_copy" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+
+
+
 
     </ScrollView>
 

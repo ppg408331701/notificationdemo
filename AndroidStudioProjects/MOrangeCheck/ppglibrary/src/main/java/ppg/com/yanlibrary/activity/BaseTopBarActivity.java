@@ -150,6 +150,8 @@ public abstract class BaseTopBarActivity extends BaseActvity {
         findViewById(R.id.detail_top_bar).setVisibility(View.GONE);
 //        findViewById(R.id.detail_top_bar_shadow).setVisibility(View.GONE);
         FrameLayout frameLayout = (FrameLayout) findViewById(R.id.detail_container);
+        View shadow = (View) findViewById(R.id.detail_top_bar_shadow);
+        shadow.setVisibility(View.GONE);
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) frameLayout.getLayoutParams();
         layoutParams.setMargins(0, 0, 0, 0);
         frameLayout.setLayoutParams(layoutParams);

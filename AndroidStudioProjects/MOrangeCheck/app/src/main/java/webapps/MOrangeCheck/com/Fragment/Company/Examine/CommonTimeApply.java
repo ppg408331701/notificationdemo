@@ -30,7 +30,10 @@ import ppg.com.yanlibrary.utils.ToastUtil;
 import ppg.com.yanlibrary.widget.recyclerview.CommonAdapter;
 import ppg.com.yanlibrary.widget.recyclerview.OnItemClickListener;
 import ppg.com.yanlibrary.widget.recyclerview.ViewHolder;
+import utils.ConvertUtils;
 import utils.FileUtils;
+import utils.FragmentUtils;
+import utils.ScreenUtils;
 import utils.StringUtils;
 import utils.TimeUtils;
 import webapps.MOrangeCheck.com.Bean.ExamineManBean;
@@ -49,6 +52,9 @@ import webapps.MOrangeCheck.com.databinding.ItemFileLayoutBinding;
  */
 
 public class CommonTimeApply extends LoadingFragment implements View.OnClickListener {
+
+    String picurl = "https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=30f49b810ff79052ef4a147e6acee3f8/5bafa40f4bfbfbedbb34deed7ef0f736afc31f36.jpg";
+    String picgif = "http://imgsrc.baidu.com/baike/pic/item/7af40ad162d9f2d339d2a789abec8a136227cc91.jpg";
 
     FragmentCommonTimeApplyBinding binding;
     /**
@@ -97,6 +103,10 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
      */
     long startTime = 0L, endTime = 0L;
 
+    private final static String imgeArray[] = {"BMP", "GIF", "JPE", "JPEG", "JPG", "PNG", "TIF", "TIFF", "ICO"};
+    private View root;
+    private FragmentUtils.SharedElement sharedElement;
+
     public CommonTimeApply() {
         super(true);
     }
@@ -104,13 +114,14 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
     @Override
     public View onLoadingCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_common_time_apply, container, false);
+        root = inflater.inflate(R.layout.fragment_common_time_apply, container, false);
         binding = DataBindingUtil.bind(root);
         binding.layoutExamineApplyCopy.copyIvAddimg.setOnClickListener(this);
         binding.layoutExamineApplyMan.manIvAddimg.setOnClickListener(this);
         binding.layoutCommonApplyEdit.llExiamineUpload.setOnClickListener(this);
         binding.layoutExamineApplyTime.rlEndTime.setOnClickListener(this);
         binding.layoutExamineApplyTime.rlStartTime.setOnClickListener(this);
+        sharedElement = new FragmentUtils.SharedElement(binding.layoutCommonApplyEdit.edTitle, picurl);
         return root;
     }
 
@@ -124,6 +135,7 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
         }
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -134,6 +146,7 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
                 choiceCopy(2);
                 break;
             case R.id.ll_exiamine_upload:
+
                 onFilePicker();
                 break;
             case R.id.rl_start_time:
@@ -245,9 +258,13 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
             });
             itemFileLayoutBinding.llFile.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(final View v) {
                     try {
-                        excludeQQSend(FileUtils.getFileByPath(fileBean.getFilePath()));
+                        if (isiPicture(fileBean.getFilesuffix())) {
+                            ImageViewFragment imageViewFragment = new ImageViewFragment();
+                            imageViewFragment.show(getFragmentManager(), "ImageViewFragment");
+                        } else
+                            excludeQQSend(FileUtils.getFileByPath(fileBean.getFilePath()));
                     } catch (Exception e) {
                         e.printStackTrace();
                         ToastUtil.toast(mActivity, "CommonTimeApply->打开文件出错");
@@ -261,7 +278,7 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
     private List<ExamineManBean> getChoiceData(int flag) {
         List<ExamineManBean> list = new ArrayList<>();
         ExamineManBean manBean;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 14; i++) {
             manBean = new ExamineManBean();
             manBean.setImg("http://imgsrc.baidu.com/forum/w=580/sign=4be4551c" +
                     "544e9258a63486e6ac83d1d1/b912c8fcc3cec3fdbec41a0dd488d43f869427cb.jpg");
@@ -360,9 +377,9 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
                 initChoiceLayout(Choicelist, flag);
             }
         };
-        choiceManDialog.getTv_title().setText("选择审批人");
-        choiceManDialog.show();
 
+        choiceManDialog.show();
+        choiceManDialog.getTv_title().setText("选择审批人");
 
     }
 
@@ -450,9 +467,9 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
                 initChoiceLayout(Choicelist2, flag);
             }
         };
-        choiceManDialog.getTv_title().setText("选择抄送人");
-        choiceManDialog.show();
 
+        choiceManDialog.show();
+        choiceManDialog.getTv_title().setText("选择抄送人");
 
     }
 
@@ -462,15 +479,21 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
      * @param flag
      */
     private void initChoiceLayout(final List<ExamineManBean> Paddinglist, final int flag) {
+
         //取得插入位置,+号按钮的前一位,由于是线性布局,所以会把+号按钮不断往后挤压
         int index = binding.layoutExamineApplyMan.llExamineMan.getChildCount() - 1;
         int index2 = binding.layoutExamineApplyCopy.llExamineMan.getChildCount() - 1;
+        //把每个头像和三个点andadditem的宽度设为屏幕的1/4-5DP
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams((ScreenUtils.getScreenWidth() / 4)
+                - ConvertUtils.dp2px(5), ViewGroup.LayoutParams.WRAP_CONTENT);
         for (int i = 0; i < Paddinglist.size(); i++) {
             final ViewGroup item_examine_avatar = (ViewGroup) mActivity.getLayoutInflater().
                     inflate(R.layout.item_examine_avatar, binding.layoutExamineApplyMan.llExamineMan, false);
+            item_examine_avatar.setLayoutParams(params);
+            binding.layoutExamineApplyMan.manIvAddimg.setLayoutParams(params);
             ImageView avatar = (ImageView) item_examine_avatar.findViewById(R.id.iv_avatar);
             //加载图片
-            ImageLoaderUtil.init().loadImage(Paddinglist.get(i).getImg(),R.color.white0,avatar);
+            ImageLoaderUtil.init().loadImageWithRound(Paddinglist.get(i).getImg(), R.color.white0, avatar);
             if (flag == 1) {
                 item_examine_avatar.setTag(i);
                 item_examine_avatar.setOnClickListener(new View.OnClickListener() {
@@ -534,6 +557,19 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
 
         }
         return R.mipmap.file_jpg;
+    }
+
+    /**
+     * 图片在本地打开
+     */
+    private boolean isiPicture(String back) {
+        String Upback = back.toUpperCase();
+        for (String s : imgeArray) {
+            if (Upback.contains(s)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

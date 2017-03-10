@@ -222,9 +222,9 @@ public class CompanyHomePage extends LoadingFragment implements View.OnClickList
                             itemCheckpointBinding.ivCheckpoint.setImageResource(R.mipmap.fingerprintok);
                         }
                     };
+                    dialogUtils.show();
                     dialogUtils.getTv_title().setText("打卡");
                     dialogUtils.getContent_text().setText("不在打卡时间范围内,是否打卡?");
-                    dialogUtils.show();
                 }
             });
             binding.llCheck.addView(chcekTimeItem);

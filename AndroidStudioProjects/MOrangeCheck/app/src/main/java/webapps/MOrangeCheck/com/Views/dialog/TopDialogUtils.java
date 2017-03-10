@@ -41,7 +41,7 @@ public abstract class TopDialogUtils extends BaseDialog<TopDialogUtils> {
         cancel_button = (TextView) inflate.findViewById(R.id.cancel_button);
         ok_button =(TextView) inflate.findViewById(R.id.ok_button);
 
-        inflate.setBackground(CornerUtils.cornerDrawable(Color.parseColor("#ffffff"), dp2px(10)));
+        inflate.setBackground(CornerUtils.cornerDrawable(Color.parseColor("#ffffff"), dp2px(7)));
 
         return inflate;
     }

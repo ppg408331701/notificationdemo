@@ -43,6 +43,15 @@
 
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/iv_check"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:visibility="gone"
+            android:src="@mipmap/dagou" />
+
         <TextView
             android:id="@+id/tv_num"
             android:layout_width="40dp"

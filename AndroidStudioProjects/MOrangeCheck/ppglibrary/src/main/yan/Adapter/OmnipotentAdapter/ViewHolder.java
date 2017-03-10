@@ -34,7 +34,6 @@ public class ViewHolder {
     public static ViewHolder get(Context context, View convertView, ViewGroup parent, int layoutid, int position, int count) {
 
         if (convertView == null) {
-            Log.v("accc", "sssssssss");
             return new ViewHolder(context, parent, layoutid, position, count);
 
         } else {

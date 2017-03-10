@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,16 +17,22 @@ import java.util.List;
 import java.util.Map;
 
 import ppg.com.yanlibrary.fragment.LoadingFragment;
+import ppg.com.yanlibrary.utils.ToastUtil;
 import ppg.com.yanlibrary.widget.recyclerview.CommonAdapter;
 import ppg.com.yanlibrary.widget.recyclerview.ViewHolder;
 import utils.ConvertUtils;
 import utils.TimeUtils;
+import webapps.MOrangeCheck.com.Bean.ExamineManBean;
 import webapps.MOrangeCheck.com.Bean.FileBean;
 import webapps.MOrangeCheck.com.Bean.TimelineBean;
 import webapps.MOrangeCheck.com.R;
+import webapps.MOrangeCheck.com.Tool.LeftPaddingDividerItemDecoration;
 import webapps.MOrangeCheck.com.Views.LineType;
 import webapps.MOrangeCheck.com.Views.TimelineView;
 import webapps.MOrangeCheck.com.Views.dialog.ExamineBottomDialog;
+import webapps.MOrangeCheck.com.Views.dialog.ExamineListBottomDialog;
+import webapps.MOrangeCheck.com.databinding.DialogExamineChioceManBinding;
+import webapps.MOrangeCheck.com.databinding.DialogExaminelistbottomBinding;
 import webapps.MOrangeCheck.com.databinding.FragmentExamintitemDetailBinding;
 import webapps.MOrangeCheck.com.databinding.ItemFileLayoutBinding;
 
@@ -62,6 +69,10 @@ public class ExamineItemDetail extends LoadingFragment implements View.OnClickLi
     public View onLoadingCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_examintitem_detail, container, false);
         binding = DataBindingUtil.bind(root);
+        binding.llOk.setOnClickListener(this);
+        binding.llNo.setOnClickListener(this);
+        binding.llPass.setOnClickListener(this);
+        binding.llNote.setOnClickListener(this);
         binding.recyclerView.setItemAnimator(new DefaultItemAnimator());
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
         initFileLayout();
@@ -88,6 +99,8 @@ public class ExamineItemDetail extends LoadingFragment implements View.OnClickLi
 
                     }
                 };
+                bottomDialog.show();
+                bottomDialog.getTv_title().setText("同意");
                 break;
             case R.id.ll_no:
                 bottomDialog = new ExamineBottomDialog(mActivity) {
@@ -96,14 +109,11 @@ public class ExamineItemDetail extends LoadingFragment implements View.OnClickLi
 
                     }
                 };
+                bottomDialog.show();
+                bottomDialog.getTv_title().setText("拒绝");
                 break;
             case R.id.ll_pass:
-                bottomDialog = new ExamineBottomDialog(mActivity) {
-                    @Override
-                    public void determineTask() {
-
-                    }
-                };
+                initBottomList();
                 break;
             case R.id.ll_note:
                 bottomDialog = new ExamineBottomDialog(mActivity) {
@@ -112,9 +122,57 @@ public class ExamineItemDetail extends LoadingFragment implements View.OnClickLi
 
                     }
                 };
+                bottomDialog.show();
+                bottomDialog.getTv_title().setText("批注");
                 break;
         }
     }
+
+    private void initBottomList() {
+        CommonAdapter bottomListAdapter = new CommonAdapter<ExamineManBean>(mActivity, R.layout.item_examine_man, getChoiceData(1)) {
+            @Override
+            public void convert(ViewHolder holder, ExamineManBean examineManBean) {
+                holder.setText(R.id.tv_name, examineManBean.getName())
+                        .setText(R.id.tv_position, examineManBean.getPostion())
+                        .getView(R.id.tv_num).setVisibility(View.GONE);
+
+            }
+        };
+        View dialog = View.inflate(mActivity, R.layout.dialog_examinelistbottom, null);
+        DialogExaminelistbottomBinding chioceManBinding = DataBindingUtil.bind(dialog);
+        chioceManBinding.dialogRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
+        chioceManBinding.dialogRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        chioceManBinding.dialogRecyclerView.addItemDecoration(new LeftPaddingDividerItemDecoration(mActivity
+                , LeftPaddingDividerItemDecoration.VERTICAL, 12));
+        chioceManBinding.dialogRecyclerView.setAdapter(bottomListAdapter);
+        ExamineListBottomDialog listBottomDialog = new ExamineListBottomDialog(mActivity, dialog) {
+            @Override
+            public void determineTask(EditText text) {
+                ToastUtil.toast(mActivity, text.getHint().toString());
+            }
+        };
+        listBottomDialog.show();
+        listBottomDialog.getTv_title().setText("转交");
+    }
+
+
+    private List<ExamineManBean> getChoiceData(int flag) {
+        List<ExamineManBean> list = new ArrayList<>();
+        ExamineManBean manBean;
+        for (int i = 0; i < 3; i++) {
+            manBean = new ExamineManBean();
+            manBean.setImg("http://imgsrc.baidu.com/forum/w=580/sign=4be4551c" +
+                    "544e9258a63486e6ac83d1d1/b912c8fcc3cec3fdbec41a0dd488d43f869427cb.jpg");
+            manBean.setName("Mr.李四" + i);
+            manBean.setPostion("研发主管");
+            manBean.setListPostion(i);
+            manBean.setClickNum(0);
+            list.add(manBean);
+        }
+        return list;
+
+    }
+
 
     /**
      * 加载时间线

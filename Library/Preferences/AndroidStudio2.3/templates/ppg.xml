@@ -1,0 +1,32 @@
+<templateSet group="ppg">
+  <template name="ppg" value="import android.databinding.DataBindingUtil;&#10;import android.os.Bundle;&#10;import android.view.LayoutInflater;&#10;import android.view.View;&#10;import android.view.ViewGroup;&#10;&#10;public $className$() {&#10;    super(true);&#10;}&#10;&#10;@Override&#10;public View onLoadingCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {&#10;    View root = inflater.inflate(R.layout.$className$, container, false);&#10;    binding = DataBindingUtil.bind(root);&#10;    return root;&#10;}&#10;&#10;@Override&#10;protected void onCreateViewRequestData() {&#10;    super.onCreateViewRequestData();&#10;}&#10;" description="loadfragment模板" toReformat="false" toShortenFQNames="true">
+    <variable name="className" expression="className()" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+    </context>
+  </template>
+  <template name="single" value="private static final byte[] sInstanceLock = new byte[0];&#10;private static $className$ sInstance;&#10;private $className$() {&#10;}&#10;public static $className$ instance() {&#10;    if (sInstance == null) {&#10;        synchronized (sInstanceLock) {&#10;            if (sInstance == null) {&#10;                sInstance = new $className$();&#10;            }&#10;        }&#10;    }&#10;    return sInstance;&#10;}" description="单例模式" toReformat="false" toShortenFQNames="true">
+    <variable name="className" expression="className()" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+    </context>
+  </template>
+  <template name="ppgintent" value="Intent intent = new Intent();&#10;intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.$value$);&#10;intent.putExtra(DetailActivity.INTENT_TITLE_KEY, &quot;&quot;);&#10;IntentTool.startByFragment(mActivity, $value$.this, intent);" toReformat="false" toShortenFQNames="true">
+    <variable name="value" expression="className()" defaultValue="FRAGNEMT" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+    </context>
+  </template>
+  <template name="ppghashmap" value="Map&lt;$key$, $value$&gt; map = new HashMap&lt;&gt;();" toReformat="false" toShortenFQNames="true">
+    <variable name="key" expression="complete()" defaultValue="String" alwaysStopAt="false" />
+    <variable name="value" expression="complete()" defaultValue="String" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+    </context>
+  </template>
+  <template name="ppgswicth" value=" Intent intent;&#10;switch (v.getId()){&#10;    case R.id.tv_title:&#10;     break;&#10;    }" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_CODE" value="true" />
+    </context>
+  </template>
+</templateSet>

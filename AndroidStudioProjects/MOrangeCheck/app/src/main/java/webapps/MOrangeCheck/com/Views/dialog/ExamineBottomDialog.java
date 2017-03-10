@@ -21,6 +21,7 @@ public abstract class ExamineBottomDialog extends BaseDialog<ExamineBottomDialog
     private TextView ok_button;
     private EditText content_edittext;
     private View.OnClickListener listener;
+    private TextView tv_title;
 
     public ExamineBottomDialog(Context context) {
         super(context);
@@ -36,12 +37,15 @@ public abstract class ExamineBottomDialog extends BaseDialog<ExamineBottomDialog
         content_edittext =(EditText) inflate.findViewById(R.id.content_edittext);
         cancel_button = (TextView) inflate.findViewById(R.id.cancel_button);
         ok_button =(TextView) inflate.findViewById(R.id.ok_button);
+        tv_title =(TextView) inflate.findViewById(R.id.tv_title);
 
-        inflate.setBackground(CornerUtils.cornerDrawable(Color.parseColor("#ffffff"), dp2px(10)));
+        inflate.setBackground(CornerUtils.cornerDrawable(Color.parseColor("#ffffff"), dp2px(7)));
         return inflate;
     }
 
-
+    public TextView getTv_title() {
+        return tv_title;
+    }
 
     @Override
     public void setUiBeforShow() {
