@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <!-- 连框颜色值 -->
+    <item>
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="1dp"
+                android:color="@color/gray4"
+                android:dashGap="3dp"
+                android:dashWidth="6dp"
+                android:layerType="software" />
+            <!--破折线的宽度为dashWith，破折线之间的空隙的宽度为dashGap，当dashGap=0dp时，为实线;
+            关于4.0以上设备虚线会变实线的问题，xml中可以添加android:layerType="software"，
+            代码中可以添加view.setLayerType(View.LAYER_TYPE_SOFTWARE, null);-->
+            <!-- 虚线的高度 -->
+            <size android:height="1dp" />
+        </shape>
+    </item>
+
+
+
+
+    <!-- 主体背景颜色值 -->
+    <item
+        android:bottom="1dp"
+        >
+        <!--边框里面背景颜色 白色-->
+        <shape>
+
+            <solid android:color="@color/white0" />
+        </shape>
+    </item>
+
+
+
+</layer-list>

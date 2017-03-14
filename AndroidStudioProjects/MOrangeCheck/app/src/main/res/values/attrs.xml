@@ -53,6 +53,15 @@
         <attr name="circularRightTextColor" format="color"/>
     </declare-styleable>
 
+    <declare-styleable name="NothinCircularProgressar" >
+        <attr name="nothig_circularSize" format="dimension"/>
+        <attr name="nothig_backgroundLineColor"  format="color"/>
+        <attr name="nothig_frontLineColor"  format="color"/>
+        <attr name="nothig_circularlineSize" format="dimension"/>
+    </declare-styleable>
+
+
+
     <declare-styleable name="WarpLinearLayout">
         <attr name="grivate" format="enum"><!--对齐方式 !-->
             <enum name="right" value="0"></enum>
@@ -62,6 +71,20 @@
         <attr name="horizontal_Space" format="dimension"></attr>
         <attr name="vertical_Space" format="dimension"></attr>
         <attr name="isFull" format="boolean"></attr>
+    </declare-styleable>
+
+
+
+    <declare-styleable name="VerTextView">
+        <attr name="vText" format="string" />
+        <attr name="vTextNum" format="integer" />
+        <attr name="vTextSize" format="reference" />
+        <attr name="vTextColor" format="color" />
+        <attr name="vTextStartAlign">
+            <flag name="left" value="0x0" />
+            <flag name="right" value="0x1" />
+        </attr>
+
     </declare-styleable>
 
 

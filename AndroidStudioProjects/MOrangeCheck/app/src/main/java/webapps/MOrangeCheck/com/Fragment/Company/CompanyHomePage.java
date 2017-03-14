@@ -24,6 +24,7 @@ import utils.ScreenUtils;
 import webapps.MOrangeCheck.com.Activity.DetailActivity;
 import webapps.MOrangeCheck.com.R;
 import webapps.MOrangeCheck.com.Tool.IntentTool;
+import webapps.MOrangeCheck.com.Views.dialog.AlmanacADialog;
 import webapps.MOrangeCheck.com.Views.dialog.TopDialogUtils;
 import webapps.MOrangeCheck.com.databinding.FragmentCompanyhomepageBinding;
 import webapps.MOrangeCheck.com.databinding.ItemCheckpointBinding;
@@ -49,6 +50,7 @@ public class CompanyHomePage extends LoadingFragment implements View.OnClickList
         View root = inflater.inflate(R.layout.fragment_companyhomepage, container, false);
         binding = DataBindingUtil.bind(root);
         binding.ivMore.setOnClickListener(this);
+        binding.tvCompanyTitle.setOnClickListener(this);
         initCheckPoint();
         initFuncation();
         return root;
@@ -82,6 +84,12 @@ public class CompanyHomePage extends LoadingFragment implements View.OnClickList
                 intent = new Intent();
                 intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.FRAGMENT_REPORTFRAGMENT);
                 intent.putExtra(DetailActivity.INTENT_TITLE_KEY, "更多");
+                IntentTool.startByFragment(mActivity, CompanyHomePage.this, intent);
+                break;
+            case R.id.tv_company_title:
+                intent = new Intent();
+                intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.FRAGMENT_WORKOUTSIDE);
+                intent.putExtra(DetailActivity.INTENT_TITLE_KEY, "外勤");
                 IntentTool.startByFragment(mActivity, CompanyHomePage.this, intent);
                 break;
         }
@@ -219,6 +227,13 @@ public class CompanyHomePage extends LoadingFragment implements View.OnClickList
                     final TopDialogUtils dialogUtils = new TopDialogUtils(mActivity) {
                         @Override
                         public void determineTask() {
+                            AlmanacADialog almanacADialog = new AlmanacADialog(mActivity) {
+                                @Override
+                                public void determineTask() {
+
+                                }
+                            };
+                            almanacADialog.show();
                             itemCheckpointBinding.ivCheckpoint.setImageResource(R.mipmap.fingerprintok);
                         }
                     };

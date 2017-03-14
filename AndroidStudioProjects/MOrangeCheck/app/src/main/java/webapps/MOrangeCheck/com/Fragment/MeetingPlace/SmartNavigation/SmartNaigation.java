@@ -56,6 +56,7 @@ public class SmartNaigation extends LoadingFragment{
     public View onLoadingCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_smart_navigation, container, false);
         binding = DataBindingUtil.bind(root);
+        binding.nestedScrollView.setFillViewport(true);
         binding.sesameView.setSesameValues(24, 40);
         binding.sesameView.setDuration(5000);
         binding.sesameView.setStyle(Paint.Style.FILL);
@@ -73,7 +74,6 @@ public class SmartNaigation extends LoadingFragment{
     }
 
     private void initViewPager() {
-
 
         viewroot.add(0, new NaigationIndex());
         viewroot.add(1, new NaigationHistory());

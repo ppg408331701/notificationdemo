@@ -83,7 +83,7 @@
     <color name="transparenthal">#00000000</color>
     <color name="transparenthalf">#e0000000</color>
     <color name="transparenthalf1">#6056e3f5</color>
-    <color name="transparenthalf2">#a5000000</color>
+    <color name="transparenthalf2">#6e000000</color>
     <color name="transparenthalf3">#63e6e6e6</color>
     <color name="white0">#FFFFFF</color>
     <color name="white">#FFFFFF</color>
@@ -92,6 +92,7 @@
     <color name="white2">#f1f1f1</color>
     <color name="yellow1">#00a0e6</color>
     <color name="yellow2">#fabe46</color>
+    <color name="yellow2trans">#d2fdcb66</color>
     <color name="transparenthalf_white2">#e0ffffff</color>
     <color name="sliding_menu_item_down">#ff39393b</color>
     <color name="sliding_menu_item_release">#00000000</color>

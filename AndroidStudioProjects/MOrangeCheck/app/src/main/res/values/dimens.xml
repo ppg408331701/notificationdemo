@@ -15,4 +15,6 @@
     <dimen name="item_margin_left">15dp</dimen>
     <dimen name="item_padding_left">15dp</dimen>
 
+    <dimen name="layout_top">5dp</dimen>
+
 </resources>

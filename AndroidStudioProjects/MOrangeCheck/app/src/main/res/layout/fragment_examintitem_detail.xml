@@ -9,7 +9,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="53dp"
-
             android:fillViewport="true">
 
 
@@ -20,6 +19,11 @@
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:orientation="vertical">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_top" />
+
 
 
                 <LinearLayout

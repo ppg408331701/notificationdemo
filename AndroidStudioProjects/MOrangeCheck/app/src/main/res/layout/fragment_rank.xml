@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroud_theme"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/layout_rank_head"
+                layout="@layout/layout_rank_head" />
+
+            <include
+                android:id="@+id/layout_rank_image"
+                layout="@layout/layout_rank_image" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <LinearLayout
+                android:id="@+id/ll_human_list"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@color/white0"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:id="@+id/iv_rank_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/btn_bg_selector">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:clickable="false"
+                        android:src="@mipmap/threepoint" />
+
+
+                </FrameLayout>
+
+
+            </LinearLayout>
+
+            <include
+                android:id="@+id/layout_rank_bottom"
+                layout="@layout/layout_rank_bottom" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_bottomtext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white0"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="告诉我,你是怎么做到的"
+                android:textColor="@color/gray5" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>

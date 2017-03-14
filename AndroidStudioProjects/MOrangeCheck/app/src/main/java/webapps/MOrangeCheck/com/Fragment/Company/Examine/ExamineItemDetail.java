@@ -19,10 +19,11 @@ import java.util.Map;
 import ppg.com.yanlibrary.fragment.LoadingFragment;
 import ppg.com.yanlibrary.utils.ToastUtil;
 import ppg.com.yanlibrary.widget.recyclerview.CommonAdapter;
+import ppg.com.yanlibrary.widget.recyclerview.OnItemClickListener;
 import ppg.com.yanlibrary.widget.recyclerview.ViewHolder;
 import utils.ConvertUtils;
 import utils.TimeUtils;
-import webapps.MOrangeCheck.com.Bean.ExamineManBean;
+import webapps.MOrangeCheck.com.Bean.ExaminePassBean;
 import webapps.MOrangeCheck.com.Bean.FileBean;
 import webapps.MOrangeCheck.com.Bean.TimelineBean;
 import webapps.MOrangeCheck.com.R;
@@ -31,7 +32,6 @@ import webapps.MOrangeCheck.com.Views.LineType;
 import webapps.MOrangeCheck.com.Views.TimelineView;
 import webapps.MOrangeCheck.com.Views.dialog.ExamineBottomDialog;
 import webapps.MOrangeCheck.com.Views.dialog.ExamineListBottomDialog;
-import webapps.MOrangeCheck.com.databinding.DialogExamineChioceManBinding;
 import webapps.MOrangeCheck.com.databinding.DialogExaminelistbottomBinding;
 import webapps.MOrangeCheck.com.databinding.FragmentExamintitemDetailBinding;
 import webapps.MOrangeCheck.com.databinding.ItemFileLayoutBinding;
@@ -51,6 +51,7 @@ public class ExamineItemDetail extends LoadingFragment implements View.OnClickLi
     private int yellow2;
     private int gray5;
     private int orange22;
+    private CommonAdapter bottomListAdapter;
 
 
     public ExamineItemDetail() {
@@ -129,26 +130,50 @@ public class ExamineItemDetail extends LoadingFragment implements View.OnClickLi
     }
 
     private void initBottomList() {
-        CommonAdapter bottomListAdapter = new CommonAdapter<ExamineManBean>(mActivity, R.layout.item_examine_man, getChoiceData(1)) {
+        bottomListAdapter = new CommonAdapter<ExaminePassBean>(mActivity, R.layout.item_examine_man, getChoiceData(1)) {
             @Override
-            public void convert(ViewHolder holder, ExamineManBean examineManBean) {
-                holder.setText(R.id.tv_name, examineManBean.getName())
-                        .setText(R.id.tv_position, examineManBean.getPostion())
+            public void convert(ViewHolder holder, ExaminePassBean passBean) {
+                holder.setText(R.id.tv_name, passBean.getName())
+                        .setText(R.id.tv_position, passBean.getPostion())
                         .getView(R.id.tv_num).setVisibility(View.GONE);
+                if (passBean.isCheck()) {
+                    holder.getView(R.id.iv_check).setVisibility(View.VISIBLE);
+                } else {
+                    holder.getView(R.id.iv_check).setVisibility(View.GONE);
+                }
 
             }
         };
-        View dialog = View.inflate(mActivity, R.layout.dialog_examinelistbottom, null);
-        DialogExaminelistbottomBinding chioceManBinding = DataBindingUtil.bind(dialog);
+        View listbottomdialog = View.inflate(mActivity, R.layout.dialog_examinelistbottom, null);
+        DialogExaminelistbottomBinding chioceManBinding = DataBindingUtil.bind(listbottomdialog);
         chioceManBinding.dialogRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
         chioceManBinding.dialogRecyclerView.setItemAnimator(new DefaultItemAnimator());
         chioceManBinding.dialogRecyclerView.addItemDecoration(new LeftPaddingDividerItemDecoration(mActivity
-                , LeftPaddingDividerItemDecoration.VERTICAL, 12));
+                , LeftPaddingDividerItemDecoration.VERTICAL, 2.5f));
         chioceManBinding.dialogRecyclerView.setAdapter(bottomListAdapter);
-        ExamineListBottomDialog listBottomDialog = new ExamineListBottomDialog(mActivity, dialog) {
+        bottomListAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(ViewGroup parent, View view, Object o, int position) {
+                ExaminePassBean passBean = (ExaminePassBean) bottomListAdapter.getmDatas(position);
+                if (passBean.isCheck()){
+                    passBean.setCheck(false);
+                }else {
+                    passBean.setCheck(true);
+                }
+
+
+                bottomListAdapter.notifyItemChanged(position);
+            }
+
+            @Override
+            public boolean onItemLongClick(ViewGroup parent, View view, Object o, int position) {
+                return false;
+            }
+        });
+        ExamineListBottomDialog listBottomDialog = new ExamineListBottomDialog(mActivity, listbottomdialog) {
             @Override
             public void determineTask(EditText text) {
-                ToastUtil.toast(mActivity, text.getHint().toString());
+                ToastUtil.toast(mActivity, text.getText().toString());
             }
         };
         listBottomDialog.show();
@@ -156,17 +181,16 @@ public class ExamineItemDetail extends LoadingFragment implements View.OnClickLi
     }
 
 
-    private List<ExamineManBean> getChoiceData(int flag) {
-        List<ExamineManBean> list = new ArrayList<>();
-        ExamineManBean manBean;
-        for (int i = 0; i < 3; i++) {
-            manBean = new ExamineManBean();
+    private List<ExaminePassBean> getChoiceData(int flag) {
+        List<ExaminePassBean> list = new ArrayList<>();
+        ExaminePassBean manBean;
+        for (int i = 0; i < 10; i++) {
+            manBean = new ExaminePassBean();
             manBean.setImg("http://imgsrc.baidu.com/forum/w=580/sign=4be4551c" +
                     "544e9258a63486e6ac83d1d1/b912c8fcc3cec3fdbec41a0dd488d43f869427cb.jpg");
             manBean.setName("Mr.李四" + i);
             manBean.setPostion("研发主管");
-            manBean.setListPostion(i);
-            manBean.setClickNum(0);
+            manBean.setCheck(false);
             list.add(manBean);
         }
         return list;

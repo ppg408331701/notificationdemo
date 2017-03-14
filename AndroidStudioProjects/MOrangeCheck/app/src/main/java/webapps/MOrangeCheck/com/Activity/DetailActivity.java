@@ -13,9 +13,11 @@ import webapps.MOrangeCheck.com.Fragment.Company.Examine.ExamineItemDetail;
 
 import webapps.MOrangeCheck.com.Fragment.Company.Report.Arrange;
 import webapps.MOrangeCheck.com.Fragment.Company.Report.ChoiceMonth;
+import webapps.MOrangeCheck.com.Fragment.Company.Report.Rank.Rank;
 import webapps.MOrangeCheck.com.Fragment.Company.Report.Report;
 import webapps.MOrangeCheck.com.Fragment.Company.Report.ReportMore;
 import webapps.MOrangeCheck.com.Fragment.Company.Report.ReportItemDetatil;
+import webapps.MOrangeCheck.com.Fragment.Company.WorkOutside.WorkOutSide;
 import webapps.MOrangeCheck.com.Fragment.MeetingPlace.MeetingPlace;
 import webapps.MOrangeCheck.com.Fragment.MeetingPlace.SmartNavigation.NagationSetting;
 import webapps.MOrangeCheck.com.Fragment.MeetingPlace.SmartNavigation.SmartNaigation;
@@ -41,7 +43,8 @@ public class DetailActivity extends BaseActivity {
     public final static int FRAGMENT_EXAMINEBASEPAG = 12;//审核/申请/抄送-子列表页面
     public final static int FRAGMENT_COMMONAPPLY = 13;//通用审核
     public final static int FRAGMENT_EXAMINEITEMDETAIL = 14;//申请,审批,抄送子列表的item的详情
-
+    public final static int FRAGMENT_RANK = 15;//通用审核
+    public final static int FRAGMENT_WORKOUTSIDE = 16;//外勤
 
 
     //会议部分
@@ -103,7 +106,12 @@ public class DetailActivity extends BaseActivity {
             case FRAGMENT_NAGATIONSETTING:
                 replaceFragment(new NagationSetting());
                 break;
-
+            case FRAGMENT_RANK:
+                replaceFragment(new Rank());
+                break;
+            case FRAGMENT_WORKOUTSIDE:
+                replaceFragment(new WorkOutSide());
+                break;
         }
 
     }

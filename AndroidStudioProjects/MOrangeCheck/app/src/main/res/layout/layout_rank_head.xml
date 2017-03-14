@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center_horizontal"
+        android:background="@color/white0"
+        tools:showIn="@layout/fragment_rank">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="英 雄 榜"
+            android:textColor="@color/black0"
+
+            android:textSize="17sp" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016/10"
+            android:textColor="@color/gray5"
+            android:layout_marginTop="2.5dp"
+            android:textSize="12sp" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="2.5dp"
+            android:src="@mipmap/examine_rank_logo" />
+
+    </LinearLayout>
+
+</layout>

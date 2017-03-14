@@ -169,6 +169,15 @@ public class TopBarLayout {
         return view;
     }
 
+    public TextView getOperationLeftView2(String text, int textColor,OnClickListener listener) {
+        TextView view = (TextView) mRoot.findViewById(R.id.NavigateOperation_L2);
+        view.setText(text);
+        view.setTextColor(textColor);
+        view.setVisibility(View.VISIBLE);
+        SupportUtil_SDK21.SupporTouchFeedback(view.getContext(), view, true, R.drawable.top_bar_button, listener);
+        return view;
+    }
+
     public TextView getOperationLeftView2(String text) {
         TextView view = (TextView) mRoot.findViewById(R.id.NavigateOperation_L2);
         view.setText(text);
@@ -213,6 +222,17 @@ public class TopBarLayout {
         SupportUtil_SDK21.SupporTouchFeedback(view.getContext(), view, true, R.drawable.top_bar_button, listener);
         return view;
     }
+
+    public TextView getOperationRightView3(String text,int textColor, OnClickListener listener) {
+        TextView view = (TextView) mRoot.findViewById(R.id.NavigateOperation_R3);
+        view.setVisibility(View.VISIBLE);
+        view.setText(text);
+        view.setTextColor(textColor);
+        //水波纹特效,需要的时候去掉注释
+        SupportUtil_SDK21.SupporTouchFeedback(view.getContext(), view, true, R.drawable.top_bar_button, listener);
+        return view;
+    }
+
 
     public TextView getOperationRightView3() {
         TextView view = (TextView) mRoot.findViewById(R.id.NavigateOperation_R3);

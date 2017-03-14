@@ -12,6 +12,11 @@
             android:background="@color/backgroud_theme"
             android:orientation="vertical">
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_top" />
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

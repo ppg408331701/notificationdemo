@@ -173,108 +173,108 @@ public class OverScrollView extends ScrollView {
         return false;
     }
 
-    public class CoProcessor {
-        private RefreshProcessor refreshProcessor;
-
-
-        private final static int PULLING_TOP_DOWN = 0;
-        private final static int PULLING_BOTTOM_UP = 1;
-        private int state = PULLING_TOP_DOWN;
-
-        private static final int EX_MODE_NORMAL = 0;
-        private static final int EX_MODE_FIXED = 1;
-        private int exHeadMode = EX_MODE_NORMAL;
-
-
-        public CoProcessor() {
-
-
-        }
-
-
-        public boolean interceptTouchEvent(MotionEvent ev) {
-            return refreshProcessor.interceptTouchEvent(ev);
-        }
-
-
-        /**
-         * 在越界时阻止再次进入这个状态而导致动画闪烁。  Prevent entering the overscroll-mode again on animating.
-         */
-        private boolean isOverScrollTopLocked = false;
-
-        public void lockOsTop() {
-            isOverScrollTopLocked = true;
-        }
-
-        public void releaseOsTopLock() {
-            isOverScrollTopLocked = false;
-        }
-
-        public boolean isOsTopLocked() {
-            return isOverScrollTopLocked;
-        }
-
-        private boolean isOverScrollBottomLocked = false;
-
-        public void lockOsBottom() {
-            isOverScrollBottomLocked = true;
-        }
-
-        public void releaseOsBottomLock() {
-            isOverScrollBottomLocked = false;
-        }
-
-        public boolean isOsBottomLocked() {
-            return isOverScrollBottomLocked;
-        }
-
-        /**
-         * 在添加附加Header前锁住，阻止一些额外的位移动画
-         */
-        private boolean isExHeadLocked = true;
-
-        public boolean isExHeadLocked() {
-            return isExHeadLocked;
-        }
-
-        private void unlockExHead() {
-            isExHeadLocked = false;
-        }
-
-
-        public void setExHeadNormal() {
-            exHeadMode = EX_MODE_NORMAL;
-        }
-
-        public void setExHeadFixed() {
-            exHeadMode = EX_MODE_FIXED;
-        }
-
-        public boolean isExHeadNormal() {
-            return exHeadMode == EX_MODE_NORMAL;
-        }
-
-        public boolean isExHeadFixed() {
-            return exHeadMode == EX_MODE_FIXED;
-        }
-
-
-        public void setStatePTD() {
-            state = PULLING_TOP_DOWN;
-        }
-
-        public void setStatePBU() {
-            state = PULLING_BOTTOM_UP;
-        }
-
-        public boolean isStatePTD() {
-            return PULLING_TOP_DOWN == state;
-        }
-
-        public boolean isStatePBU() {
-            return PULLING_BOTTOM_UP == state;
-        }
-    }
+//    public class CoProcessor {
+//        private RefreshProcessor refreshProcessor;
+//
+//
+//        private final static int PULLING_TOP_DOWN = 0;
+//        private final static int PULLING_BOTTOM_UP = 1;
+//        private int state = PULLING_TOP_DOWN;
+//
+//        private static final int EX_MODE_NORMAL = 0;
+//        private static final int EX_MODE_FIXED = 1;
+//        private int exHeadMode = EX_MODE_NORMAL;
+//
+//
+//        public CoProcessor() {
+//
+//
+//        }
+//
+//
+//        public boolean interceptTouchEvent(MotionEvent ev) {
+//            return refreshProcessor.interceptTouchEvent(ev);
+//        }
+//
+//
+//        /**
+//         * 在越界时阻止再次进入这个状态而导致动画闪烁。  Prevent entering the overscroll-mode again on animating.
+//         */
+//        private boolean isOverScrollTopLocked = false;
+//
+//        public void lockOsTop() {
+//            isOverScrollTopLocked = true;
+//        }
+//
+//        public void releaseOsTopLock() {
+//            isOverScrollTopLocked = false;
+//        }
+//
+//        public boolean isOsTopLocked() {
+//            return isOverScrollTopLocked;
+//        }
+//
+//        private boolean isOverScrollBottomLocked = false;
+//
+//        public void lockOsBottom() {
+//            isOverScrollBottomLocked = true;
+//        }
+//
+//        public void releaseOsBottomLock() {
+//            isOverScrollBottomLocked = false;
+//        }
+//
+//        public boolean isOsBottomLocked() {
+//            return isOverScrollBottomLocked;
+//        }
+//
+//        /**
+//         * 在添加附加Header前锁住，阻止一些额外的位移动画
+//         */
+//        private boolean isExHeadLocked = true;
+//
+//        public boolean isExHeadLocked() {
+//            return isExHeadLocked;
+//        }
+//
+//        private void unlockExHead() {
+//            isExHeadLocked = false;
+//        }
+//
+//
+//        public void setExHeadNormal() {
+//            exHeadMode = EX_MODE_NORMAL;
+//        }
+//
+//        public void setExHeadFixed() {
+//            exHeadMode = EX_MODE_FIXED;
+//        }
+//
+//        public boolean isExHeadNormal() {
+//            return exHeadMode == EX_MODE_NORMAL;
+//        }
+//
+//        public boolean isExHeadFixed() {
+//            return exHeadMode == EX_MODE_FIXED;
+//        }
+//
+//
+//        public void setStatePTD() {
+//            state = PULLING_TOP_DOWN;
+//        }
+//
+//        public void setStatePBU() {
+//            state = PULLING_BOTTOM_UP;
+//        }
+//
+//        public boolean isStatePTD() {
+//            return PULLING_TOP_DOWN == state;
+//        }
+//
+//        public boolean isStatePBU() {
+//            return PULLING_BOTTOM_UP == state;
+//        }
+//    }
 
 }
 // ┏┓　　　┏┓

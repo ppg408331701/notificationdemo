@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:padding="3dp"
+            android:background="@drawable/dialog_top_circle"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="270dp"
+                android:background="@drawable/dialog_bottom_point"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingRight="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+
+                    <webapps.MOrangeCheck.com.Views.VerTextView
+                        android:id="@+id/lunar_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="85dp"
+                        android:layout_marginLeft="30dp"
+                        app:vText="二月初四"
+                        app:vTextColor="@color/black0"
+                        app:vTextNum="20"
+                        app:vTextSize="@dimen/text_size_normal" />
+
+
+                    <webapps.MOrangeCheck.com.Views.VerticalTextView
+                        android:id="@+id/num_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="6dp"
+                        android:gravity="right"
+                        android:text="2017.3.2"
+                        android:textColor="@color/black0"
+                        android:textSize="@dimen/text_size_normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <webapps.MOrangeCheck.com.Views.VerTextView
+                        android:id="@+id/almanac_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="140dp"
+                        android:layout_marginLeft="30dp"
+                        app:vText="丁酉年 人言月"
+                        app:vTextColor="@color/black0"
+                        app:vTextNum="12"
+                        app:vTextSize="@dimen/text_size_normal" />
+
+                    <webapps.MOrangeCheck.com.Views.VerTextView
+                        android:id="@+id/week_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="75dp"
+                        android:layout_marginLeft="10dp"
+                        app:vText="周三"
+                        app:vTextColor="@color/black0"
+                        app:vTextNum="20"
+                        app:vTextSize="@dimen/text_size_normal" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:gravity="center"
+
+                android:background="@drawable/dialog_left_point"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/big_day"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="2"
+                    android:layout_marginTop="-25dp"
+                    android:textColor="@color/black0"
+                    android:textSize="140sp" />
+
+                <TextView
+                    android:id="@+id/prediction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="作为手机通讯的附件"
+                    android:textColor="@color/black0" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="126dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dialog_bottom_circle"
+                android:gravity="center_horizontal"
+                android:paddingBottom="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/ana_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="4"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="30dp"
+                    android:paddingTop="10dp"
+                    android:text="长夜将至，我从今开始守望，\n至死方休。"
+                    android:textColor="@color/black0"
+                    android:textSize="20sp" />
+
+
+                <TextView
+                    android:id="@+id/ana_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:maxLines="1"
+                    android:paddingRight="25dp"
+                    android:text="- 守夜人誓言"
+                    android:textColor="@color/black0"
+                    android:textSize="16sp" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/black_close"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

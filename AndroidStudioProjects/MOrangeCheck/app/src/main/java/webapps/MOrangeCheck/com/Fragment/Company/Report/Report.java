@@ -52,6 +52,7 @@ public class Report extends LoadingFragment implements View.OnClickListener {
     public View onLoadingCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_report, container, false);
         binding = DataBindingUtil.bind(root);
+        binding.report.llRank.setOnClickListener(this);
         binding.report.llChoiceMouth.setOnClickListener(this);
         binding.reportFuncation.rlLate.setOnClickListener(this);
         binding.reportFuncation.rlAbsenteeism.setOnClickListener(this);
@@ -85,6 +86,12 @@ public class Report extends LoadingFragment implements View.OnClickListener {
     public void onClick(View v) {
         Intent intent;
         switch (v.getId()) {
+            case R.id.ll_rank:
+                intent = new Intent();
+                intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.FRAGMENT_RANK);
+                intent.putExtra(DetailActivity.INTENT_TITLE_KEY, "");
+                IntentTool.startByFragment(mActivity, Report.this, intent);
+                break;
             case R.id.ll_choice_mouth:
                 intent = new Intent();
                 intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.FRAGMENT_CHOICEMONTH);

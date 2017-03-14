@@ -33,6 +33,7 @@ import ppg.com.yanlibrary.widget.recyclerview.ViewHolder;
 import utils.ConvertUtils;
 import utils.FileUtils;
 import utils.FragmentUtils;
+import utils.ImageUtils;
 import utils.ScreenUtils;
 import utils.StringUtils;
 import utils.TimeUtils;
@@ -103,12 +104,24 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
      */
     long startTime = 0L, endTime = 0L;
 
-    private final static String imgeArray[] = {"BMP", "GIF", "JPE", "JPEG", "JPG", "PNG", "TIF", "TIFF", "ICO"};
+    private final static String imgeArray[] = {"BMP", "GIF", "JPE", "JPEG", "JPG", "PNG", "WEBP", "TIFF", "ICO"};
     private View root;
     private FragmentUtils.SharedElement sharedElement;
 
     public CommonTimeApply() {
         super(true);
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mActivity.getTopBar().getOperationRightView3("提交", ContextCompat.getColor(mActivity, R.color.yellow2), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -260,7 +273,7 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
                 @Override
                 public void onClick(final View v) {
                     try {
-                        if (isiPicture(fileBean.getFilesuffix())) {
+                        if (ImageUtils.isImage(fileBean.getFilePath())) {
                             ImageViewFragment imageViewFragment = new ImageViewFragment();
                             imageViewFragment.show(getFragmentManager(), "ImageViewFragment");
                         } else

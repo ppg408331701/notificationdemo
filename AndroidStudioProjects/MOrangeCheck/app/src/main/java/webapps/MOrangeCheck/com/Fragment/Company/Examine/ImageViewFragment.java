@@ -19,6 +19,8 @@ import utils.ScreenUtils;
 import webapps.MOrangeCheck.com.R;
 
 /**
+ * 图片浏览的fragment
+ * 全屏黑底
  * Created by ppg777 on 2017/3/9.
  */
 
