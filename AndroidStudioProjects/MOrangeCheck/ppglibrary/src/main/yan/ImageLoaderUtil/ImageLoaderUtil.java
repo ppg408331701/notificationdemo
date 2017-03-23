@@ -46,6 +46,10 @@ public class ImageLoaderUtil {
         mStrategy.loadGifImage(url, placeholder, imageView);
     }
 
+    public void loadFileImage(String path, int placeholder, ImageView imageView) {
+        mStrategy.loadFileImage(path, placeholder, imageView);
+    }
+
     public void loadImage(String url, ImageView imageView) {
         mStrategy.loadImage(url, imageView);
     }
@@ -53,6 +57,7 @@ public class ImageLoaderUtil {
     public void loadImageWithAppCxt(String url, ImageView imageView) {
         mStrategy.loadImageWithAppCxt(url, imageView);
     }
+
 
 
     public void loadImageWithRound(String url, int placeholder, ImageView imageView) {

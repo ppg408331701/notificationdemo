@@ -18,7 +18,7 @@ public  class   App_DefaultTool {
         Intent intent = new Intent();
         switch (app_deault){
             case "1":
-                intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.FRAGMENT_MYINFOFRAGMENT);
+                intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.FRAGMENT_MYPAGE);
                 intent.putExtra(DetailActivity.INTENT_TITLE_KEY, "我的");
                 break;
             case "3":

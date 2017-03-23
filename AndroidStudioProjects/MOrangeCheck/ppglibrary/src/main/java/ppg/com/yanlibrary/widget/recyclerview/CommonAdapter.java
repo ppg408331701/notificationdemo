@@ -1,110 +1,48 @@
 package ppg.com.yanlibrary.widget.recyclerview;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 
 import java.util.List;
+
+import ppg.com.yanlibrary.widget.recyclerview.base.ItemViewDelegate;
+import ppg.com.yanlibrary.widget.recyclerview.base.ViewHolder;
 
 /**
  * Created by zhy on 16/4/9.
  */
-public abstract class CommonAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
+public abstract class CommonAdapter<T> extends MultiItemTypeAdapter<T> {
     protected Context mContext;
     protected int mLayoutId;
     protected List<T> mDatas;
     protected LayoutInflater mInflater;
 
-    private OnItemClickListener mOnItemClickListener;
-
-
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.mOnItemClickListener = onItemClickListener;
-    }
-
-    public CommonAdapter(Context context, int layoutId, List<T> datas) {
+    public CommonAdapter(final Context context, final int layoutId, List<T> datas) {
+        super(context, datas);
         mContext = context;
         mInflater = LayoutInflater.from(context);
         mLayoutId = layoutId;
         mDatas = datas;
-    }
 
-    public void setMoreDatas(List<T> Datas) {
-
-        for (int i = 0; i < Datas.size(); i++) {
-            mDatas.add(Datas.get(i));
-        }
-        notifyDataSetChanged();
-    }
-
-    public T  getmDatas(int postion){
-        return mDatas.get(postion);
-    }
-
-    public void setmDatas(List<T> Datas) {
-        mDatas.clear();
-        mDatas = Datas;
-        notifyDataSetChanged();
-    }
-
-
-
-    @Override
-    public ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
-        ViewHolder viewHolder = ViewHolder.get(mContext, null, parent, mLayoutId, -1);
-        setListener(parent, viewHolder, viewType);
-        return viewHolder;
-    }
-
-    protected int getPosition(RecyclerView.ViewHolder viewHolder) {
-        return viewHolder.getAdapterPosition();
-    }
-
-    protected boolean isEnabled(int viewType) {
-        return true;
-    }
-
-
-    protected void setListener(final ViewGroup parent, final ViewHolder viewHolder, int viewType) {
-        if (!isEnabled(viewType)) return;
-        viewHolder.getConvertView().setOnClickListener(new View.OnClickListener() {
+        addItemViewDelegate(new ItemViewDelegate<T>() {
             @Override
-            public void onClick(View v) {
-                if (mOnItemClickListener != null) {
-                    int position = getPosition(viewHolder);
-                    mOnItemClickListener.onItemClick(parent, v, mDatas.get(position), position);
-                }
+            public int getItemViewLayoutId() {
+                return layoutId;
             }
-        });
 
-
-        viewHolder.getConvertView().setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public boolean onLongClick(View v) {
-                if (mOnItemClickListener != null) {
-                    int position = getPosition(viewHolder);
-                    return mOnItemClickListener.onItemLongClick(parent, v, mDatas.get(position), position);
-                }
-                return false;
+            public boolean isForViewType(T item, int position) {
+                return true;
+            }
+
+            @Override
+            public void convert(ViewHolder holder, T t, int position) {
+                CommonAdapter.this.convert(holder, t, position);
             }
         });
     }
 
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.updatePosition(position);
-        convert(holder, mDatas.get(position));
-    }
-
-    public abstract void convert(ViewHolder holder, T t);
-
-    @Override
-    public int getItemCount() {
-        return mDatas.size();
-    }
+    protected abstract void convert(ViewHolder holder, T t, int position);
 
 
 }

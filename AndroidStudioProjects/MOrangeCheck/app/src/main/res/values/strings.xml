@@ -2,4 +2,6 @@
     <string name="app_name">橘子签到</string>
     <string name="about_string">关于橘子签到</string>
     <string name="repodefalf">- - -</string>
+    <string name="about_string2">关于橘子             签到</string>
+    <string name="search">search</string>
 </resources>

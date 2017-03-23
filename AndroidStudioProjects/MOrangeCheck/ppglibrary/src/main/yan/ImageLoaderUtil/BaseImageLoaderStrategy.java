@@ -21,6 +21,7 @@ public interface BaseImageLoaderStrategy {
 
     void loadGifImage(String url, int placeholder, ImageView imageView);
 
+    void loadFileImage(String path, int placeholder, ImageView imageView);
 
     void loadImageWithRound(String url, int placeholder, ImageView imageView);
 

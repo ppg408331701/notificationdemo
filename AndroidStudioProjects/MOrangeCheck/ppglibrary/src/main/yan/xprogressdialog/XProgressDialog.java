@@ -3,13 +3,11 @@ package xprogressdialog;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import Tools.T;
 import ppg.com.yanlibrary.R;
 
 /**

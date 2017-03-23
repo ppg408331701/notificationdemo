@@ -180,10 +180,11 @@ public class TimeUtils {
      * 注意：SimpleDateFormat不是线程安全的，线程安全需用{@code ThreadLocal<SimpleDateFormat>}
      */
     public static final String DEFAULT_PATTERN = "yyyy-MM-dd HH:mm:ss";
-    public static final String A_PATTERN = "yyyy年MM月dd日";
+    public static final String A_PATTERN = "yyyy年M月d日";
     public static final String B_PATTERN = "yyyy.M.d";
     public static final String C_PATTERN = "HH:mm";
-    public static final String D_PATTERN = "MM月dd日 HH:mm";
+    public static final String D_PATTERN = "M月d日 HH:mm";
+    public static final String E_PATTERN = "M月d日";
     /**
      * 将时间戳转为时间字符串
      * <p>格式为yyyy-MM-dd HH:mm:ss</p>

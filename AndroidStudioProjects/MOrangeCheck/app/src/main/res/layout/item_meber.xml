@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:background="@color/white0"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@color/white0">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_meber_avatar"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_default_image" />
+
+            <TextView
+                android:id="@+id/tv_meber_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:text="战三" />
+
+            <ImageView
+                android:id="@+id/iv_meber_gender"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="4dp"
+                android:src="@mipmap/man" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_meber_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="35dp"
+            android:text="执行总裁"
+            android:textColor="@color/gray5"
+            android:textSize="12sp" />
+
+
+    </FrameLayout>
+
+    <View
+        android:id="@+id/meber_divder"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:background="@color/backgroud_theme" />
+
+
+</RelativeLayout>

@@ -2,10 +2,11 @@ package webapps.MOrangeCheck.com.Activity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 
-import com.zhy.http.okhttp.OkHttpUtils;
+import com.lzy.okgo.OkGo;
 
 import ppg.com.yanlibrary.activity.BaseTopBarActivity;
 import webapps.MOrangeCheck.com.Application.AppApplication;
@@ -33,10 +34,13 @@ public abstract class BaseActivity extends BaseTopBarActivity {
 
     @Override
     protected void onStop() {
-        //可以取消同一个tag的
-        //   OkHttpUtils.cancelTag(this);//取消以Activity.this作为tag的请求
-        OkHttpUtils.getInstance().cancelTag(this);
         AppApplication.popActivity(this);
         super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
     }
 }

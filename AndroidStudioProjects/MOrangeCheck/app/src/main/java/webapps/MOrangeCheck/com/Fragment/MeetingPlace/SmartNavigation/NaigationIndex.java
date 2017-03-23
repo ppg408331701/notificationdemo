@@ -8,14 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import ppg.com.yanlibrary.fragment.LoadingFragment;
-import ppg.com.yanlibrary.widget.recyclerview.CommonAdapter;
-import ppg.com.yanlibrary.widget.recyclerview.OnItemClickListener;
-import ppg.com.yanlibrary.widget.recyclerview.ViewHolder;
-import utils.ToastUtils;
 import webapps.MOrangeCheck.com.R;
 
 /**
@@ -31,7 +30,7 @@ public class NaigationIndex extends LoadingFragment{
         super(true);
     }
     private List<String> list = new ArrayList<>();
-    private CommonAdapter<String> adapter;
+    private BaseQuickAdapter adapter;
 
 
     @Override
@@ -57,23 +56,18 @@ public class NaigationIndex extends LoadingFragment{
         for (int i = 0; i < 15; i++) {
             list.add("onCreateViewRequestData" + i);
         }
-        adapter = new CommonAdapter<String>(mActivity, R.layout.item_naigation, list) {
+        adapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_naigation, list) {
+
 
             @Override
-            public void convert(ViewHolder holder, String s) {
+            protected void convert(BaseViewHolder holder, String s) {
                 holder.setText(R.id.tv_main_title, s);
-
             }
         };
-        adapter.setOnItemClickListener(new OnItemClickListener() {
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(ViewGroup parent, View view, Object o, int position) {
-                ToastUtils.showShortToast("setOnItemClickListener"+position);
-            }
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
-            @Override
-            public boolean onItemLongClick(ViewGroup parent, View view, Object o, int position) {
-                return false;
             }
         });
         recyclerView.setAdapter(adapter);

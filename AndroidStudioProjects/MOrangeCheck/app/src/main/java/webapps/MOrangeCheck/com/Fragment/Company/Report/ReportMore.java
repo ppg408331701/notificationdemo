@@ -18,7 +18,8 @@ import java.util.Random;
 
 import ppg.com.yanlibrary.fragment.LoadingFragment;
 import ppg.com.yanlibrary.widget.recyclerview.CommonAdapter;
-import ppg.com.yanlibrary.widget.recyclerview.ViewHolder;
+
+import ppg.com.yanlibrary.widget.recyclerview.base.ViewHolder;
 import utils.ConvertUtils;
 import webapps.MOrangeCheck.com.Factory.RecyclerViewFactory;
 import webapps.MOrangeCheck.com.R;
@@ -61,7 +62,7 @@ public class ReportMore extends LoadingFragment {
         adapter = new CommonAdapter<String>(mActivity, R.layout.item_report_dateil, list) {
 
             @Override
-            public void convert(ViewHolder holder, String s) {
+            public void convert(ViewHolder holder, String s,int postion) {
                 holder.setText(R.id.tv_date, s);
                 LinearLayout layout = holder.getView(R.id.ll_checkpoint);
                 addCheckPoint(layout);

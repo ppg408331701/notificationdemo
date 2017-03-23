@@ -12,14 +12,12 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="@color/white0">
+                android:layout_height="45dp">
 
                 <TextView
                     android:id="@+id/cancel_button"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@drawable/btn_bg_selector"
                     android:gravity="center"
                     android:paddingLeft="25dp"
                     android:paddingRight="25dp"
@@ -41,7 +39,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="right|center_vertical"
-                    android:background="@drawable/btn_bg_selector"
                     android:gravity="center"
                     android:paddingLeft="25dp"
                     android:paddingRight="25dp"
@@ -70,8 +67,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="95dp"
-            android:layout_gravity="bottom"
-            android:background="@color/white0">
+            android:layout_gravity="bottom">
 
             <EditText
                 android:id="@+id/content_edittext"

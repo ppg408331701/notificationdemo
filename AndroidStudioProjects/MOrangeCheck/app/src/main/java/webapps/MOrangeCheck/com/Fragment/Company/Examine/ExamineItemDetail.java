@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,9 +22,10 @@ import java.util.Map;
 import ppg.com.yanlibrary.fragment.LoadingFragment;
 import ppg.com.yanlibrary.utils.ToastUtil;
 import ppg.com.yanlibrary.widget.recyclerview.CommonAdapter;
-import ppg.com.yanlibrary.widget.recyclerview.OnItemClickListener;
-import ppg.com.yanlibrary.widget.recyclerview.ViewHolder;
+import ppg.com.yanlibrary.widget.recyclerview.MultiItemTypeAdapter;
+import ppg.com.yanlibrary.widget.recyclerview.base.ViewHolder;
 import utils.ConvertUtils;
+import utils.StringUtils;
 import utils.TimeUtils;
 import webapps.MOrangeCheck.com.Bean.ExaminePassBean;
 import webapps.MOrangeCheck.com.Bean.FileBean;
@@ -47,7 +51,7 @@ public class ExamineItemDetail extends LoadingFragment implements View.OnClickLi
     private List<TimelineBean> list = new ArrayList<>();
     private List<FileBean> fileList = new ArrayList<>();
     Map<String, String> map = new HashMap<>();
-    private CommonAdapter adapter;
+    private TimelineAdapter adapter;
     private int yellow2;
     private int gray5;
     private int orange22;
@@ -76,6 +80,7 @@ public class ExamineItemDetail extends LoadingFragment implements View.OnClickLi
         binding.llNote.setOnClickListener(this);
         binding.recyclerView.setItemAnimator(new DefaultItemAnimator());
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
+        initHolyday();
         initFileLayout();
         initTimeLine();
         return root;
@@ -129,10 +134,13 @@ public class ExamineItemDetail extends LoadingFragment implements View.OnClickLi
         }
     }
 
+    /**
+     * 转交,先构造好页面,再传入dialog中,比较麻烦
+     */
     private void initBottomList() {
         bottomListAdapter = new CommonAdapter<ExaminePassBean>(mActivity, R.layout.item_examine_man, getChoiceData(1)) {
             @Override
-            public void convert(ViewHolder holder, ExaminePassBean passBean) {
+            public void convert(ViewHolder holder, ExaminePassBean passBean, int postion) {
                 holder.setText(R.id.tv_name, passBean.getName())
                         .setText(R.id.tv_position, passBean.getPostion())
                         .getView(R.id.tv_num).setVisibility(View.GONE);
@@ -151,10 +159,10 @@ public class ExamineItemDetail extends LoadingFragment implements View.OnClickLi
         chioceManBinding.dialogRecyclerView.addItemDecoration(new LeftPaddingDividerItemDecoration(mActivity
                 , LeftPaddingDividerItemDecoration.VERTICAL, 2.5f));
         chioceManBinding.dialogRecyclerView.setAdapter(bottomListAdapter);
-        bottomListAdapter.setOnItemClickListener(new OnItemClickListener() {
+        bottomListAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(ViewGroup parent, View view, Object o, int position) {
-                ExaminePassBean passBean = (ExaminePassBean) bottomListAdapter.getmDatas(position);
+                ExaminePassBean passBean = (ExaminePassBean) bottomListAdapter.getmDatas().get(position);
                 if (passBean.isCheck()){
                     passBean.setCheck(false);
                 }else {
@@ -219,47 +227,32 @@ public class ExamineItemDetail extends LoadingFragment implements View.OnClickLi
             }
             list.add(timelineBean);
         }
-        adapter = new CommonAdapter<TimelineBean>(mActivity, R.layout.item_timeline, list) {
+        adapter = new TimelineAdapter();
 
-            @Override
-            public int getItemViewType(int position) {
-                return TimelineView.getTimeLineViewType(position, getItemCount());
-            }
-
-            @Override
-            public void convert(ViewHolder holder, TimelineBean timelineBean) {
-                holder.setText(R.id.tv_name, timelineBean.getmName())
-                        .setText(R.id.tv_date, timelineBean.getmDate())
-                        .setText(R.id.tv_message, timelineBean.getmMessage());
-                TimelineView timelineView = holder.getView(R.id.time_marker);
-                timelineView.initLine(holder.getItemViewType());
-                if (timelineBean.getmStatus() == 0) {
-                    holder.setText(R.id.tv_state, "已同意").setTextColor(R.id.tv_state, yellow2);
-                    //当状态为已同意时,把标记设为实心圆
-                    timelineView.setMarker(ContextCompat.getDrawable(mActivity, R.drawable.marker));
-                    //当状态为已同意并且是第一个时,把下半部的线设为橙色
-                    if (holder.getItemViewType() == LineType.BEGIN)
-                        timelineView.setEndLine(yellow2, LineType.NORMAL);
-                    if (holder.getItemViewType() == LineType.NORMAL) {
-                        //当当状态为已同意并且为中间的item时,上上下的线都设为橙色
-                        timelineView.setEndLine(yellow2, LineType.NORMAL);
-                        timelineView.setStartLine(yellow2, LineType.NORMAL);
-                    }
-                } else if (timelineBean.getmStatus() == 1) {
-                    holder.setText(R.id.tv_state, "等待审核").setTextColor(R.id.tv_state, gray5);
-                    timelineView.setMarker(ContextCompat.getDrawable(mActivity, R.drawable.shape_oval_grey));
-                } else {
-                    holder.setText(R.id.tv_state, "被拒绝").setTextColor(R.id.tv_state, orange22);
-                    timelineView.setMarker(ContextCompat.getDrawable(mActivity, R.drawable.shape_oval_grey));
-                }
-                if (holder.getAdapterPosition() == adapter.getItemCount() - 1) {
-                    holder.getView(R.id.fl_square_bottom).setBackgroundResource(R.color.white0);
-                }
-
-            }
-        };
         binding.recyclerView.setAdapter(adapter);
     }
+
+    /**
+     * 请假时间
+     */
+    private void initHolyday() {
+        binding.llInsert.setPadding(ConvertUtils.dp2px(15), 0, ConvertUtils.dp2px(15), ConvertUtils.dp2px(15));
+        final ViewGroup item_holiday = (ViewGroup) mActivity.getLayoutInflater().
+                inflate(R.layout.layout_holiday_item, binding.llInsert, false);
+        TextView tv_holiday_text = (TextView) item_holiday.findViewById(R.id.tv_holiday_text);
+        TextView tv_holiday_time = (TextView) item_holiday.findViewById(R.id.tv_holiday_time);
+        long startTime = Calendar.getInstance().getTimeInMillis();
+        tv_holiday_text.setText(TimeUtils.millis2String(startTime, TimeUtils.E_PATTERN) + "(" + TimeUtils.getWeek(startTime) +
+                ") ━ " + TimeUtils.millis2String(startTime, TimeUtils.E_PATTERN) + "(" + TimeUtils.getWeek(startTime) + ")");
+
+        if (startTime > 0L && startTime > 0L) {
+            String TimeSpan = "共 " + TimeUtils.getFitTimeSpanPpg(startTime, startTime + 1000000, 3);
+            tv_holiday_time.setText(StringUtils.highlight(TimeSpan, "[0-9]*"));
+        }
+        binding.llInsert.addView(item_holiday);
+    }
+
+
 
 
     /**
@@ -313,4 +306,97 @@ public class ExamineItemDetail extends LoadingFragment implements View.OnClickLi
     }
 
 
+    class TimelineAdapter extends RecyclerView.Adapter<ViewHolder> {
+
+        @Override
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            ViewHolder holder = new ViewHolder(mActivity, LayoutInflater.from(mActivity)
+                    .inflate(R.layout.item_timeline, parent, false));
+            return holder;
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            return TimelineView.getTimeLineViewType(position, getItemCount());
+        }
+
+        @Override
+        public void onBindViewHolder(ViewHolder holder, int position) {
+            holder.setText(R.id.tv_name, (list.get(position)).getmName())
+                    .setText(R.id.tv_date, (list.get(position)).getmDate())
+                    .setText(R.id.tv_message, (list.get(position)).getmMessage());
+            TimelineView timelineView = holder.getView(R.id.time_marker);
+            timelineView.initLine(holder.getItemViewType());
+            if ((list.get(position)).getmStatus() == 0) {
+                holder.setText(R.id.tv_state, "已同意").setTextColor(R.id.tv_state, yellow2);
+                //当状态为已同意时,把标记设为实心圆
+                timelineView.setMarker(ContextCompat.getDrawable(mActivity, R.drawable.marker));
+                //当状态为已同意并且是第一个时,把下半部的线设为橙色
+                if (holder.getItemViewType() == LineType.BEGIN)
+                    timelineView.setEndLine(yellow2, LineType.NORMAL);
+                if (holder.getItemViewType() == LineType.NORMAL) {
+                    //当当状态为已同意并且为中间的item时,上上下的线都设为橙色
+                    timelineView.setEndLine(yellow2, LineType.NORMAL);
+                    timelineView.setStartLine(yellow2, LineType.NORMAL);
+                }
+            } else if ((list.get(position)).getmStatus() == 1) {
+                holder.setText(R.id.tv_state, "等待审核").setTextColor(R.id.tv_state, gray5);
+                timelineView.setMarker(ContextCompat.getDrawable(mActivity, R.drawable.shape_oval_grey));
+            } else {
+                holder.setText(R.id.tv_state, "被拒绝").setTextColor(R.id.tv_state, orange22);
+                timelineView.setMarker(ContextCompat.getDrawable(mActivity, R.drawable.shape_oval_grey));
+            }
+            if (holder.getAdapterPosition() == adapter.getItemCount() - 1) {
+                holder.getView(R.id.fl_square_bottom).setBackgroundResource(R.color.white0);
+            }
+
+        }
+
+
+        @Override
+        public int getItemCount() {
+            return list.size();
+        }
+    }
+
+
+    //        adapter = new CommonAdapter<TimelineBean>(mActivity, R.layout.item_timeline, list) {
+//
+//            @Override
+//            public int getItemViewType(int position) {
+//                return TimelineView.getTimeLineViewType(position, getItemCount());
+//            }
+//
+//            @Override
+//            public void convert(ViewHolder holder, TimelineBean timelineBean, int positon) {
+//                holder.setText(R.id.tv_name, timelineBean.getmName())
+//                        .setText(R.id.tv_date, timelineBean.getmDate())
+//                        .setText(R.id.tv_message, timelineBean.getmMessage());
+//                TimelineView timelineView = holder.getView(R.id.time_marker);
+//                timelineView.initLine(holder.getItemViewType());
+//                if (timelineBean.getmStatus() == 0) {
+//                    holder.setText(R.id.tv_state, "已同意").setTextColor(R.id.tv_state, yellow2);
+//                    //当状态为已同意时,把标记设为实心圆
+//                    timelineView.setMarker(ContextCompat.getDrawable(mActivity, R.drawable.marker));
+//                    //当状态为已同意并且是第一个时,把下半部的线设为橙色
+//                    if (holder.getItemViewType() == LineType.BEGIN)
+//                        timelineView.setEndLine(yellow2, LineType.NORMAL);
+//                    if (holder.getItemViewType() == LineType.NORMAL) {
+//                        //当当状态为已同意并且为中间的item时,上上下的线都设为橙色
+//                        timelineView.setEndLine(yellow2, LineType.NORMAL);
+//                        timelineView.setStartLine(yellow2, LineType.NORMAL);
+//                    }
+//                } else if (timelineBean.getmStatus() == 1) {
+//                    holder.setText(R.id.tv_state, "等待审核").setTextColor(R.id.tv_state, gray5);
+//                    timelineView.setMarker(ContextCompat.getDrawable(mActivity, R.drawable.shape_oval_grey));
+//                } else {
+//                    holder.setText(R.id.tv_state, "被拒绝").setTextColor(R.id.tv_state, orange22);
+//                    timelineView.setMarker(ContextCompat.getDrawable(mActivity, R.drawable.shape_oval_grey));
+//                }
+//                if (holder.getAdapterPosition() == adapter.getItemCount() - 1) {
+//                    holder.getView(R.id.fl_square_bottom).setBackgroundResource(R.color.white0);
+//                }
+//
+//            }
+//        };
 }

@@ -63,8 +63,8 @@ public class CompanyHomePage extends LoadingFragment implements View.OnClickList
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.FRAGMENT_MEETINGPLACEFRAGMENT);
-                intent.putExtra(DetailActivity.INTENT_TITLE_KEY, "东盟博览会");
+                intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.FRAGMENT_MYPAGE);
+                intent.putExtra(DetailActivity.INTENT_TITLE_KEY, "我的");
                 IntentTool.startByFragment(mActivity, CompanyHomePage.this, intent);
             }
         });
@@ -87,6 +87,10 @@ public class CompanyHomePage extends LoadingFragment implements View.OnClickList
                 IntentTool.startByFragment(mActivity, CompanyHomePage.this, intent);
                 break;
             case R.id.tv_company_title:
+//                 intent = new Intent();
+//                intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.FRAGMENT_MEETINGPLACEFRAGMENT);
+//                intent.putExtra(DetailActivity.INTENT_TITLE_KEY, "东盟博览会");
+//                IntentTool.startByFragment(mActivity, CompanyHomePage.this, intent);
                 intent = new Intent();
                 intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.FRAGMENT_WORKOUTSIDE);
                 intent.putExtra(DetailActivity.INTENT_TITLE_KEY, "外勤");
@@ -164,8 +168,8 @@ public class CompanyHomePage extends LoadingFragment implements View.OnClickList
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent();
-                            intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.FRAGMENT_EXAMINE);
-                            intent.putExtra(DetailActivity.INTENT_TITLE_KEY, "申请与审批");
+                            intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.FRAGMENT_COMPANYDOCUMENT);
+                            intent.putExtra(DetailActivity.INTENT_TITLE_KEY, "文档");
                             IntentTool.startByFragment(mActivity, CompanyHomePage.this, intent);
                         }
                     });

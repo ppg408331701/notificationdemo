@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
@@ -27,14 +29,12 @@ import ImageLoaderUtil.ImageLoaderUtil;
 import cn.qqtheme.framework.picker.FilePicker;
 import ppg.com.yanlibrary.fragment.LoadingFragment;
 import ppg.com.yanlibrary.utils.ToastUtil;
-import ppg.com.yanlibrary.widget.recyclerview.CommonAdapter;
-import ppg.com.yanlibrary.widget.recyclerview.OnItemClickListener;
-import ppg.com.yanlibrary.widget.recyclerview.ViewHolder;
 import utils.ConvertUtils;
 import utils.FileUtils;
 import utils.FragmentUtils;
 import utils.ImageUtils;
 import utils.ScreenUtils;
+import utils.SnackbarUtils;
 import utils.StringUtils;
 import utils.TimeUtils;
 import webapps.MOrangeCheck.com.Bean.ExamineManBean;
@@ -77,11 +77,11 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
     /**
      * 审批人填充器
      */
-    private CommonAdapter adapter;
+    private BaseQuickAdapter adapter;
     /**
      * 抄送人填充器
      */
-    private CommonAdapter adapter2;
+    private BaseQuickAdapter adapter2;
     /**
      * 保存附件的list
      */
@@ -188,10 +188,10 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
                 .setMinMillseconds(System.currentTimeMillis() - Month)
                 .setMaxMillseconds(System.currentTimeMillis() + Years)
                 .setCurrentMillseconds(System.currentTimeMillis())
-                .setThemeColor(ContextCompat.getColor(mActivity, R.color.timetimepicker_default_text_color))
+                .setThemeColor(ContextCompat.getColor(mActivity, R.color.orange_primary_text))
                 .setType(Type.ALL)
-                .setWheelItemTextNormalColor(ContextCompat.getColor(mActivity, R.color.timetimepicker_default_text_color))
-                .setWheelItemTextSelectorColor(ContextCompat.getColor(mActivity, R.color.yellow2))
+                .setWheelItemTextNormalColor(ContextCompat.getColor(mActivity, R.color.orange_primary_text))
+                .setWheelItemTextSelectorColor(ContextCompat.getColor(mActivity, R.color.orange_primary))
                 .setWheelItemTextSize(13)
                 .setCallBack(new OnDateSetListener() {
                     @Override
@@ -201,6 +201,12 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
                             startTime = millseconds;
                             binding.layoutExamineApplyTime.tvStartTime.setText(timeString);
                         } else {
+                            if (endTime <= startTime) {
+                                SnackbarUtils.showLongSnackbar(getRoot(), "结束时间不能小于起始时间"
+                                        , ContextCompat.getColor(mActivity, R.color.orange_primary_dark), ContextCompat
+                                                .getColor(mActivity, R.color.orange_primary_text));
+                                return;
+                            }
                             endTime = millseconds;
                             binding.layoutExamineApplyTime.tvEndTime.setText(timeString);
                         }
@@ -315,10 +321,9 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
             list = getChoiceData(flag);
         }
         if (adapter == null) {
-            adapter = new CommonAdapter<ExamineManBean>(mActivity, R.layout.item_examine_man, list) {
-
+            adapter = new BaseQuickAdapter<ExamineManBean, BaseViewHolder>(R.layout.item_examine_man, list) {
                 @Override
-                public void convert(ViewHolder holder, ExamineManBean s) {
+                protected void convert(BaseViewHolder holder, ExamineManBean s) {
                     holder.setText(R.id.tv_name, s.getName());
                     holder.setText(R.id.tv_position, s.getPostion());
                     holder.setText(R.id.tv_num, "#" + s.getClickNum());
@@ -333,10 +338,10 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
 
                 }
             };
-            adapter.setOnItemClickListener(new OnItemClickListener() {
+            adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
-                public void onItemClick(ViewGroup parent, View view, Object o, int position) {
-                    ExamineManBean examineManBean = (ExamineManBean) o;
+                public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                    ExamineManBean examineManBean = (ExamineManBean) adapter.getItem(position);
                     if (examineManBean.getClickNum() > 0) {
                         for (int i = 0; i < list.size(); i++) {
                             if (list.get(i).getClickNum() > examineManBean.getClickNum()) {
@@ -355,11 +360,6 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
                         examineManBean.setClickNum(max + 1);
                         adapter.notifyDataSetChanged();
                     }
-                }
-
-                @Override
-                public boolean onItemLongClick(ViewGroup parent, View view, Object o, int position) {
-                    return false;
                 }
             });
         } else {
@@ -405,10 +405,10 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
             list2 = getChoiceData(flag);
         }
         if (adapter2 == null) {
-            adapter2 = new CommonAdapter<ExamineManBean>(mActivity, R.layout.item_examine_man, list2) {
+            adapter2 = new BaseQuickAdapter<ExamineManBean, BaseViewHolder>(R.layout.item_examine_man, list2) {
 
                 @Override
-                public void convert(ViewHolder holder, ExamineManBean s) {
+                protected void convert(BaseViewHolder holder, ExamineManBean s) {
                     holder.setText(R.id.tv_name, s.getName());
                     holder.setText(R.id.tv_position, s.getPostion());
                     holder.setText(R.id.tv_num, "#" + s.getClickNum());
@@ -421,11 +421,13 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
                     }
                     ImageLoaderUtil.init().loadImageWithRound(s.getImg(),R.color.white0,(ImageView) holder.getView(R.id.iv_img));
                 }
+
+
             };
-            adapter2.setOnItemClickListener(new OnItemClickListener() {
+            adapter2.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
-                public void onItemClick(ViewGroup parent, View view, Object o, int position) {
-                    ExamineManBean examineManBean = (ExamineManBean) o;
+                public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                    ExamineManBean examineManBean = (ExamineManBean) adapter.getItem(position);
                     if (examineManBean.getClickNum() > 0) {
                         for (int i = 0; i < list2.size(); i++) {
                             if (list2.get(i).getClickNum() > examineManBean.getClickNum()) {
@@ -444,11 +446,6 @@ public class CommonTimeApply extends LoadingFragment implements View.OnClickList
                         examineManBean.setClickNum(max + 1);
                         adapter2.notifyDataSetChanged();
                     }
-                }
-
-                @Override
-                public boolean onItemLongClick(ViewGroup parent, View view, Object o, int position) {
-                    return false;
                 }
             });
         } else {

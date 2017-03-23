@@ -88,6 +88,11 @@ public class MeetingPlace extends LoadingFragment {
                             intent.putExtra(DetailActivity.INTENT_TITLE_KEY, "智能导览");
                             IntentTool.startByFragment(mActivity, MeetingPlace.this, intent);
                             break;
+                        case "动态":
+                            intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.FRAGMENT_DYNAMIC);
+                            intent.putExtra(DetailActivity.INTENT_TITLE_KEY, "动态");
+                            IntentTool.startByFragment(mActivity, MeetingPlace.this, intent);
+                            break;
                     }
                 }
             });

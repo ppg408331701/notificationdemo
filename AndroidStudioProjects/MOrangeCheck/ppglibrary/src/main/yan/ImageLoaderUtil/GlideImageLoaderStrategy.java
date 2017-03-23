@@ -75,6 +75,21 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy {
         loadGif(imageView.getContext(), url, placeholder, imageView);
     }
 
+    /**
+     * 加载文件
+     * @param path
+     * @param placeholder
+     * @param imageView
+     */
+    @Override
+    public void loadFileImage(String path, int placeholder, ImageView imageView) {
+        Glide.with(imageView.getContext())
+                .load("file://" + path)
+                .placeholder(placeholder)
+                .crossFade(500)
+                .into(imageView);
+    }
+
     @Override
     public void loadImageWithRound(String url, int placeholder, ImageView imageView) {
         Glide.with(imageView.getContext())

@@ -4,11 +4,13 @@ import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -19,10 +21,9 @@ import java.util.Random;
 import java.util.TimeZone;
 
 import ppg.com.yanlibrary.fragment.LoadingFragment;
-import ppg.com.yanlibrary.widget.recyclerview.CommonAdapter;
-import ppg.com.yanlibrary.widget.recyclerview.ViewHolder;
 import webapps.MOrangeCheck.com.R;
 import webapps.MOrangeCheck.com.Tool.LT;
+import webapps.MOrangeCheck.com.Tool.LeftPaddingDividerItemDecoration;
 import webapps.MOrangeCheck.com.Views.compactcalendarview.CompactCalendarView;
 import webapps.MOrangeCheck.com.Views.compactcalendarview.domain.Event;
 import webapps.MOrangeCheck.com.databinding.FragmentArrangeBinding;
@@ -35,7 +36,7 @@ import webapps.MOrangeCheck.com.databinding.FragmentArrangeBinding;
 public class Arrange extends LoadingFragment {
 
     FragmentArrangeBinding binding;
-    private CommonAdapter adapter;
+    private BaseQuickAdapter adapter;
     private List<String>  list = new ArrayList<>();;
 
     public Arrange() {
@@ -84,7 +85,7 @@ public class Arrange extends LoadingFragment {
         });
         binding.calanderList.setHasFixedSize(true);
         binding.calanderList.setItemAnimator(new DefaultItemAnimator());
-        binding.calanderList.addItemDecoration(new DividerItemDecoration(mActivity, DividerItemDecoration.VERTICAL));
+        binding.calanderList.addItemDecoration(new LeftPaddingDividerItemDecoration(mActivity, LeftPaddingDividerItemDecoration.VERTICAL, 0));
         binding.calanderList.setLayoutManager(new LinearLayoutManager(mActivity));
         initData();
         return root;
@@ -94,11 +95,10 @@ public class Arrange extends LoadingFragment {
         for (int i = 0; i < 5; i++) {
             list.add("测试数据" + i);
         }
-        adapter = new CommonAdapter<String>(mActivity, R.layout.item_calander, list) {
-
+        adapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_calander, list) {
             @Override
-            public void convert(ViewHolder holder, String s) {
-                holder.setText(R.id.tv_title, s);
+            protected void convert(BaseViewHolder helper, String item) {
+                helper.setText(R.id.tv_title, item);
             }
         };
         binding.calanderList.setAdapter(adapter);

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white0"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="是否要下载该文件"
+            android:textColor="@color/orange_primary_text"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="24dp"
+            android:text="2月22日财务报表.xls\n大小:2.5MB"
+            android:textColor="@color/orange_secondary_text" />
+
+        <CheckBox
+            android:id="@+id/cx_show"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:textColor="@color/gray5"
+            android:textSize="12sp"
+            android:visibility="visible"
+            android:text="不在显示此提示" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bt_cancle"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg_selector"
+                android:text="取消"
+                android:textColor="@color/orange_primary_text" />
+
+            <Button
+                android:id="@+id/bt_sure"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg_selector"
+                android:text="确定"
+                android:textColor="@color/orange_primary" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

@@ -10,13 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import ppg.com.yanlibrary.fragment.LoadingFragment;
-import ppg.com.yanlibrary.widget.recyclerview.CommonAdapter;
-import ppg.com.yanlibrary.widget.recyclerview.OnItemClickListener;
-import ppg.com.yanlibrary.widget.recyclerview.ViewHolder;
 import webapps.MOrangeCheck.com.Activity.DetailActivity;
 import webapps.MOrangeCheck.com.R;
 import webapps.MOrangeCheck.com.Tool.IntentTool;
@@ -34,7 +34,7 @@ public class ExamineBasePag extends LoadingFragment {
     private int type = 1;
 
     private List<String> list = new ArrayList<>();
-    private CommonAdapter<String> adapter;
+
 
     public ExamineBasePag() {
         super(true);
@@ -77,27 +77,37 @@ public class ExamineBasePag extends LoadingFragment {
         for (int i = 0; i < 5; i++) {
             list.add("9月" + i + "日");
         }
-        adapter = new CommonAdapter<String>(mActivity, R.layout.item_examinebase, list) {
+        BaseQuickAdapter adapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_examinebase, list) {
 
             @Override
-            public void convert(ViewHolder holder, String s) {
-                holder.setText(R.id.tv_examinebase_date, s);
+            protected void convert(BaseViewHolder holder, String item) {
+                holder.setText(R.id.tv_examinebase_date, item);
             }
         };
-        adapter.setOnItemClickListener(new OnItemClickListener() {
+//        adapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(ViewGroup parent, View view, Object o, int position) {
+//              Intent intent = new Intent();
+//              intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.FRAGMENT_EXAMINEITEMDETAIL);
+//              intent.putExtra(DetailActivity.INTENT_TITLE_KEY, "详情");
+//              IntentTool.startByFragment(mActivity, ExamineBasePag.this, intent);
+//            }
+//
+//            @Override
+//            public boolean onItemLongClick(ViewGroup parent, View view, Object o, int position) {
+//                return false;
+//            }
+//        });
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(ViewGroup parent, View view, Object o, int position) {
-              Intent intent = new Intent();
-              intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.FRAGMENT_EXAMINEITEMDETAIL);
-              intent.putExtra(DetailActivity.INTENT_TITLE_KEY, "详情");
-              IntentTool.startByFragment(mActivity, ExamineBasePag.this, intent);
-            }
-
-            @Override
-            public boolean onItemLongClick(ViewGroup parent, View view, Object o, int position) {
-                return false;
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent();
+                intent.putExtra(DetailActivity.INTENT_FRAGMENT_INDEX_KEY, DetailActivity.FRAGMENT_EXAMINEITEMDETAIL);
+                intent.putExtra(DetailActivity.INTENT_TITLE_KEY, "详情");
+                IntentTool.startByFragment(mActivity, ExamineBasePag.this, intent);
             }
         });
+
         binding.recyclerView.setAdapter(adapter);
     }
 }

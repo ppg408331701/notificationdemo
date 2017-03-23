@@ -1,6 +1,5 @@
 package webapps.MOrangeCheck.com.Fragment.MeetingPlace.SmartNavigation;
 
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,17 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import ppg.com.yanlibrary.fragment.LoadingFragment;
-import ppg.com.yanlibrary.widget.recyclerview.CommonAdapter;
-import ppg.com.yanlibrary.widget.recyclerview.OnItemClickListener;
-import ppg.com.yanlibrary.widget.recyclerview.ViewHolder;
-import utils.ToastUtils;
 import webapps.MOrangeCheck.com.R;
-import webapps.MOrangeCheck.com.Views.CustomLinearLayoutManager;
-import webapps.MOrangeCheck.com.databinding.FragmentNaigationRecylerviewBinding;
+
 
 /**
  * Created by ppg777 on 2017/3/8.
@@ -35,7 +32,7 @@ public class NaigationHistory extends LoadingFragment {
 
     private List<String> list = new ArrayList<>();
 
-    private CommonAdapter<String> adapter;
+    private BaseQuickAdapter adapter;
 
 
 
@@ -63,23 +60,18 @@ public class NaigationHistory extends LoadingFragment {
         for (int i = 0; i < 15; i++) {
             list.add("onCreateViewRequestData" + i);
         }
-        adapter = new CommonAdapter<String>(mActivity, R.layout.item_naigation, list) {
+        adapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_naigation, list) {
+
 
             @Override
-            public void convert(ViewHolder holder, String s) {
+            protected void convert(BaseViewHolder holder, String s) {
                 holder.setText(R.id.tv_main_title, s);
-
             }
         };
-        adapter.setOnItemClickListener(new OnItemClickListener() {
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(ViewGroup parent, View view, Object o, int position) {
-                ToastUtils.showShortToast("setOnItemClickListener"+position);
-            }
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
-            @Override
-            public boolean onItemLongClick(ViewGroup parent, View view, Object o, int position) {
-                return false;
             }
         });
         recyclerView.setAdapter(adapter);

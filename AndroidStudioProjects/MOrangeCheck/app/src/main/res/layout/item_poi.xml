@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white0"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_poi_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:text="当初我爸妈在到了好几个亮点 "
+            android:textSize="14sp" />
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_poi_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp"
+            android:text="但是我还是不能说这剧好"
+            android:textColor="@color/gray5"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

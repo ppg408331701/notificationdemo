@@ -1,6 +1,8 @@
 package webapps.MOrangeCheck.com.Constants;
 
 
+import java.io.File;
+
 import webapps.MOrangeCheck.com.Tool.LT;
 
 /**
@@ -11,6 +13,11 @@ public class Constans {
 
     	public static final int DEBUGLEVEL = LT.LEVEL_ALL;// LEVEL_ALL显示所有日志;LEVEL_OFF关闭日志显示
     //    public static final int DEBUGLEVEL = LT.LEVEL_OFF;// LEVEL_ALL显示所有日志;LEVEL_OFF关闭日志显示
+	/**
+	 * /下载目标文件夹
+	 */
+	public static final String MYFOLDER = "download" + File.separator;
+
 
 
 	public final static String ACTION_BUTTON = "com.notifications.intent.action.ButtonClick";

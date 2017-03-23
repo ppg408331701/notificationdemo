@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroud_theme"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_top" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white0"
+            android:divider="@drawable/listdivider"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+            <RelativeLayout
+                android:id="@+id/rl_set_avater"
+                style="@style/RelativeLayout_item2">
+
+                <TextView
+                    style="@style/text_item"
+                    android:text="头像" />
+
+                <ImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="30dp"
+                    android:src="@drawable/ic_default_image" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_set_name"
+                style="@style/RelativeLayout_item2">
+
+                <TextView
+                    style="@style/text_item"
+                    android:text="名字" />
+
+                <TextView
+                    android:id="@+id/tv_my_name"
+                    style="@style/item_text_right"
+                    android:text="----" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_set_gender"
+                style="@style/RelativeLayout_item2">
+
+                <TextView
+                    style="@style/text_item"
+                    android:text="性别" />
+
+                <TextView
+                    android:id="@+id/tv_my_gender"
+                    style="@style/item_text_right"
+                    android:text="----" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_set_birthday"
+                style="@style/RelativeLayout_item2">
+
+                <TextView
+                    style="@style/text_item"
+                    android:text="生日" />
+
+                <TextView
+                    android:id="@+id/tv_my_birthday"
+                    style="@style/item_text_right"
+                    android:text="----" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_top"
+                android:background="@color/backgroud_theme"/>
+
+            <RelativeLayout
+                android:id="@+id/rl_set_password"
+                style="@style/RelativeLayout_item2">
+
+                <TextView
+                    style="@style/text_item"
+                    android:text="更改密码" />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

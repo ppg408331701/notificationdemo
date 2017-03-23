@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroud_theme"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroud_theme"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_top" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white0"
+                android:divider="@drawable/listdivider"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RelativeLayout style="@style/RelativeLayout_item2">
+
+                    <TextView
+                        style="@style/item_text"
+                        android:text="头像" />
+
+                    <ImageView
+                        android:id="@+id/iv_personal_avater"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_default_image" />
+
+                </RelativeLayout>
+
+                <RelativeLayout style="@style/RelativeLayout_item2">
+
+                    <TextView
+                        style="@style/item_text"
+                        android:text="名字" />
+
+                    <TextView
+                        style="@style/item_right_text2"
+                        android:layout_alignParentRight="true"
+                        android:text="----" />
+
+                </RelativeLayout>
+
+                <RelativeLayout style="@style/RelativeLayout_item2">
+
+                    <TextView
+                        style="@style/item_text"
+                        android:text="头衔" />
+
+                    <TextView
+                        style="@style/item_right_text2"
+                        android:layout_alignParentRight="true"
+                        android:text="----" />
+
+                </RelativeLayout>
+
+                <RelativeLayout style="@style/RelativeLayout_item2">
+
+                    <TextView
+                        style="@style/item_text"
+                        android:text="性别" />
+
+                    <TextView
+                        style="@style/item_right_text2"
+                        android:layout_alignParentRight="true"
+                        android:text="----" />
+
+                </RelativeLayout>
+
+                <RelativeLayout style="@style/RelativeLayout_item2">
+
+                    <TextView
+                        style="@style/item_text"
+                        android:text="年龄" />
+
+                    <TextView
+                        style="@style/item_right_text2"
+                        android:layout_alignParentRight="true"
+                        android:text="----" />
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout style="@style/RelativeLayout_item2">
+
+                    <TextView
+                        style="@style/item_text"
+                        android:text="手机号" />
+
+                    <TextView
+                        style="@style/item_right_text2"
+                        android:layout_alignParentRight="true"
+                        android:text="----"
+                        android:textColor="@color/yellow2" />
+
+                </RelativeLayout>
+
+                <RelativeLayout style="@style/RelativeLayout_item2">
+
+                    <TextView
+                        style="@style/item_text"
+                        android:text="邮箱" />
+
+                    <TextView
+                        style="@style/item_right_text2"
+                        android:layout_alignParentRight="true"
+                        android:text="----"
+                        android:textColor="@color/yellow2" />
+
+                </RelativeLayout>
+
+                <RelativeLayout style="@style/RelativeLayout_item2">
+
+                    <TextView
+                        style="@style/item_text"
+                        android:text="隶属" />
+
+                    <TextView
+                        style="@style/item_right_text2"
+                        android:layout_alignParentRight="true"
+                        android:text="----" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
+                android:background="@color/yellow2"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="1dp">
+
+                <android.support.v7.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/yellow2"
+                    android:text="发消息"
+                    android:textColor="@color/white0" />
+
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</layout>
+

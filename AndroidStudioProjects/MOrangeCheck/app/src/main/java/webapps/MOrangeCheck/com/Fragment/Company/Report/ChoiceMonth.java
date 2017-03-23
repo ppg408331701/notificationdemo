@@ -7,19 +7,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ppg.com.yanlibrary.fragment.LoadingFragment;
-import ppg.com.yanlibrary.utils.ToastUtil;
-import ppg.com.yanlibrary.widget.recyclerview.CommonAdapter;
-import ppg.com.yanlibrary.widget.recyclerview.OnItemClickListener;
-import ppg.com.yanlibrary.widget.recyclerview.ViewHolder;
 import webapps.MOrangeCheck.com.Bean.MonthTimeBean;
 import webapps.MOrangeCheck.com.R;
-import webapps.MOrangeCheck.com.Tool.SectionDecoration;
+import webapps.MOrangeCheck.com.Tool.LeftPaddingDividerItemDecoration;
+import webapps.MOrangeCheck.com.Views.TitleItemDecoration;
 import webapps.MOrangeCheck.com.databinding.FragmentChoiceMonthBinding;
 
 /**
@@ -32,9 +31,7 @@ public class ChoiceMonth extends LoadingFragment {
     View root;
     FragmentChoiceMonthBinding binding;
 
-    private int mCurrentPosition = 0;
 
-    private int mSuspensionHeight;
     private ArrayList<MonthTimeBean> dataList;
     private List<String> testlist;
 
@@ -47,9 +44,14 @@ public class ChoiceMonth extends LoadingFragment {
     public View onLoadingCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_choice_month, container, false);
         binding = DataBindingUtil.bind(root);
-        initRcyView();
+        binding.rvList.setItemAnimator(new DefaultItemAnimator());
+        binding.rvList.setLayoutManager(new LinearLayoutManager(mActivity));
+
+        binding.rvList.setHasFixedSize(true);
+
         return root;
     }
+
 
     @Override
     protected void onCreateViewRequestData() {
@@ -81,11 +83,26 @@ public class ChoiceMonth extends LoadingFragment {
         return strings;
     }
 
+
+    private void setPullAction(List<String> comingslist) {
+        dataList = new ArrayList<>();
+        MonthTimeBean nameBean;
+        for (int i = 0; i < comingslist.size(); i++) {
+            nameBean = new MonthTimeBean();
+            String name0 = comingslist.get(i).toString();
+            nameBean.setName(name0);
+            nameBean.setType(false);
+            nameBean.setTag(name0);
+            dataList.add(nameBean);
+        }
+    }
+
     private void paddingData() {
-        final CommonAdapter adapter = new CommonAdapter<MonthTimeBean>(mActivity, R.layout.item_organization, dataList) {
+
+        final BaseQuickAdapter adapter = new BaseQuickAdapter<MonthTimeBean, BaseViewHolder>(R.layout.item_organization, dataList) {
 
             @Override
-            public void convert(ViewHolder holder, MonthTimeBean s) {
+            protected void convert(BaseViewHolder holder, MonthTimeBean s) {
                 holder.setText(R.id.organization_name, s.getName());
                 if (s.isType()) {
                     holder.getView(R.id.iv_check).setVisibility(View.VISIBLE);
@@ -93,67 +110,21 @@ public class ChoiceMonth extends LoadingFragment {
                     holder.getView(R.id.iv_check).setVisibility(View.GONE);
                 }
             }
+
+
         };
-        binding.feedList.addItemDecoration(new SectionDecoration(dataList, mActivity,
-                new SectionDecoration.DecorationCallback() {
-                    //返回标记id (即每一项对应的标志性的字符串)
-                    @Override
-                    public String getGroupId(int position) {
-                        if (dataList.get(position).getName() != null) {
-                            return dataList.get(position).getName();
-                        }
-                        return "-1";
-                    }
 
-                    //获取同组中的第一个内容
-                    @Override
-                    public String getGroupFirstLine(int position) {
-                        if (dataList.get(position).getName() != null) {
-                            return dataList.get(position).getName();
-                        }
-                        return "";
-                    }
-                }));
-
-        adapter.setOnItemClickListener(new OnItemClickListener() {
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(ViewGroup parent, View view, Object o, int position) {
-                MonthTimeBean timeBean = (MonthTimeBean) o;
-                ImageView imageView = (ImageView) parent.findViewById(R.id.iv_check);
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                MonthTimeBean timeBean = (MonthTimeBean) adapter.getItem(position);
                 timeBean.setType(true);
-                adapter.notifyItemChanged(position);
-
-            }
-
-            @Override
-            public boolean onItemLongClick(ViewGroup parent, View view, Object o, int position) {
-                return false;
+                adapter.notifyDataSetChanged();
             }
         });
-        binding.feedList.setAdapter(adapter);
-    }
-
-    private void initRcyView() {
-        //初始化
-        binding.feedList.setHasFixedSize(true);
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(mActivity);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        binding.feedList.setLayoutManager(layoutManager);
-        binding.feedList.setHasFixedSize(true);
-        binding.feedList.setItemAnimator(new DefaultItemAnimator());
-
-
-    }
-
-    private void setPullAction(List<String> comingslist) {
-        dataList = new ArrayList<>();
-
-        for (int i = 0; i < comingslist.size(); i++) {
-            MonthTimeBean nameBean = new MonthTimeBean();
-            String name0 = comingslist.get(i).toString();
-            nameBean.setName(name0);
-            nameBean.setType(false);
-            dataList.add(nameBean);
-        }
+        binding.rvList.setAdapter(adapter);
+        binding.rvList.addItemDecoration(new TitleItemDecoration(mActivity, dataList));
+        binding.rvList.addItemDecoration(new LeftPaddingDividerItemDecoration(mActivity,
+                LeftPaddingDividerItemDecoration.VERTICAL, 0));
     }
 }

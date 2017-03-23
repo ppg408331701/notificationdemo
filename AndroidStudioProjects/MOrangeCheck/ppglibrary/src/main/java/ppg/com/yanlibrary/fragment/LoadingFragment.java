@@ -17,13 +17,13 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
+import com.lzy.okgo.OkGo;
+
 import ppg.com.yanlibrary.R;
 import ppg.com.yanlibrary.activity.BaseTopBarActivity;
-
 import ppg.com.yanlibrary.widget.SweetAlert.SweetAlertDialog;
 import ppg.com.yanlibrary.widget.progressbar.RotateLoading;
 import utils.ConvertUtils;
-import utils.ScreenUtils;
 
 /**
  * 提供异步加载功能
@@ -440,7 +440,7 @@ public abstract class LoadingFragment extends Fragment {
 
     @Override
     public void onDestroy() {
+        OkGo.getInstance().cancelTag(this);
         super.onDestroy();
-
     }
 }

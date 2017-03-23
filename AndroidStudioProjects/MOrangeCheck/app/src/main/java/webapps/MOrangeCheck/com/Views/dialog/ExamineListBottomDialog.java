@@ -2,9 +2,6 @@ package webapps.MOrangeCheck.com.Views.dialog;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,7 +10,6 @@ import com.flyco.dialog.utils.CornerUtils;
 import com.flyco.dialog.widget.base.BaseDialog;
 
 import webapps.MOrangeCheck.com.R;
-import webapps.MOrangeCheck.com.Tool.LeftPaddingDividerItemDecoration;
 
 /**
  * Created by ppg777 on 2017/3/9.

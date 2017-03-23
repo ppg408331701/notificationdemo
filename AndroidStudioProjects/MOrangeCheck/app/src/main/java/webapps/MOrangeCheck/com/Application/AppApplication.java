@@ -3,15 +3,14 @@ package webapps.MOrangeCheck.com.Application;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
-import android.support.multidex.MultiDexApplication;
-
 
 import com.bilibili.boxing.BoxingCrop;
 import com.bilibili.boxing.BoxingMediaLoader;
 import com.bilibili.boxing.loader.IBoxingMediaLoader;
-import com.zhy.http.okhttp.OkHttpUtils;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.cache.CacheMode;
+import com.lzy.okgo.cookie.store.PersistentCookieStore;
 
 import org.litepal.LitePal;
 
@@ -19,10 +18,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
-import okhttp3.OkHttpClient;
-import ppg.com.yanlibrary.utils.LoggerInterceptor;
 import ppg.com.yanlibrary.utils.SessionUtils;
+import utils.SPUtils;
 import utils.Utils;
 import webapps.MOrangeCheck.com.Tool.BoxingGlideLoader;
 import webapps.MOrangeCheck.com.Tool.BoxingUcrop;
@@ -32,7 +31,7 @@ import webapps.MOrangeCheck.com.Tool.BoxingUcrop;
  * Created by ppg on 2016/10/13.
  */
 
-public class AppApplication extends MultiDexApplication {
+public class AppApplication extends Application {
 
     private static int navigationHeight;
 
@@ -47,6 +46,7 @@ public class AppApplication extends MultiDexApplication {
 
 
     private static Map<String, String> headers= new HashMap<>();
+    private static SPUtils spUtils;
 
     public static void setHeaders(String token) {
 
@@ -74,19 +74,22 @@ public class AppApplication extends MultiDexApplication {
 //        Intent intent = new Intent(this, BackgroundService.class);
 //        startService(intent);
 
+        //必须调用初始化
+        OkGo.init(this);
+        OkGo.getInstance()
+                .debug("okgo", Level.INFO, true)
+                .setCookieStore(new PersistentCookieStore()) //cookie持久化存储，如果cookie不过期，则一直有效
+                .setCacheMode(CacheMode.DEFAULT)
+                .setCertificates();//信任所有证书,不安全有风险
+
         //初始化工具类
         Utils.init(this);
-
-        //okhttp的log日志
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(new LoggerInterceptor("okdebug",true))
-//                .addInterceptor(new MyNetWorkInterceptor())
-                .build();
-        OkHttpUtils.initClient(okHttpClient);
+        spUtils = new SPUtils(this.getPackageName());
 
         IBoxingMediaLoader loader = new BoxingGlideLoader();
         BoxingMediaLoader.getInstance().init(loader);
         BoxingCrop.getInstance().init(new BoxingUcrop());
+
 
 //        InitializeService.start(this);
 //        Recovery.getInstance()
@@ -165,6 +168,9 @@ public class AppApplication extends MultiDexApplication {
         return mMainThreadId;
     }
 
+    public static SPUtils getSpUtils() {
+        return spUtils;
+    }
 
     // 获取状态栏高度
     public int getStatusBarHeight() {

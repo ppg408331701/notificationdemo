@@ -2,13 +2,12 @@ package utils;
 
 import android.support.annotation.ColorInt;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-
 
 import java.lang.ref.WeakReference;
 
@@ -30,6 +29,18 @@ public class SnackbarUtils {
 
     private static WeakReference<Snackbar> snackbarWeakReference;
 
+
+    /**
+     * @param rootview 显示的根布局
+     * @param msg      显示的文字
+     * @param action   显示的动作文字
+     */
+    public static void showNoDisMiss(View rootview, String msg, @ColorInt int textColor, String action, View.OnClickListener listener) {
+        snackbarWeakReference = new WeakReference<>(Snackbar.make(rootview, msg, Snackbar.LENGTH_INDEFINITE).setAction(action, listener));
+        snackbarWeakReference.get().setActionTextColor(textColor);
+        snackbarWeakReference.get().show();
+    }
+
     /**
      * 显示短时snackbar
      *
@@ -41,6 +52,7 @@ public class SnackbarUtils {
     public static void showShortSnackbar(View parent, CharSequence text, @ColorInt int textColor, @ColorInt int bgColor) {
         showSnackbar(parent, text, Snackbar.LENGTH_SHORT, textColor, bgColor, null, -1, null);
     }
+
 
     /**
      * 显示短时snackbar

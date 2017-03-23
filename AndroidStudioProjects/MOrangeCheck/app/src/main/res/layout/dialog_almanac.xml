@@ -15,9 +15,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="280dp"
-            android:padding="3dp"
             android:background="@drawable/dialog_top_circle"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="3dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -25,25 +25,35 @@
                 android:background="@drawable/dialog_bottom_point"
                 android:gravity="center"
                 android:orientation="vertical"
+                android:paddingLeft="15dp"
                 android:paddingRight="20dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="20dp"
                     android:orientation="horizontal">
 
 
-                    <webapps.MOrangeCheck.com.Views.VerTextView
+                    <!--<webapps.MOrangeCheck.com.Views.VerTextView-->
+                    <!--android:id="@+id/lunar_date"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="100dp"-->
+                    <!--android:layout_marginLeft="30dp"-->
+                    <!--app:vText="二月初四"-->
+                    <!--app:vTextColor="@color/black0"-->
+                    <!--app:vTextNum="8"-->
+                    <!--app:vTextSize="@dimen/text_size_normal" />-->
+
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/lunar_date"
                         android:layout_width="wrap_content"
-                        android:layout_height="85dp"
-                        android:layout_marginLeft="30dp"
-                        app:vText="二月初四"
-                        app:vTextColor="@color/black0"
-                        app:vTextNum="20"
-                        app:vTextSize="@dimen/text_size_normal" />
-
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:maxEms="1"
+                        android:textColor="@color/black0"
+                        android:text="二月初四" />
 
                     <webapps.MOrangeCheck.com.Views.VerticalTextView
                         android:id="@+id/num_date"
@@ -60,29 +70,48 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:orientation="horizontal">
 
-                    <webapps.MOrangeCheck.com.Views.VerTextView
+                    <!--<webapps.MOrangeCheck.com.Views.VerTextView-->
+                    <!--android:id="@+id/almanac_date"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="120dp"-->
+                    <!--android:layout_marginLeft="30dp"-->
+                    <!--app:vText="丁酉年 人言月"-->
+                    <!--app:vTextColor="@color/black0"-->
+                    <!--app:vTextNum="10"-->
+                    <!--app:vTextSize="@dimen/text_size_normal" />-->
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/almanac_date"
                         android:layout_width="wrap_content"
-                        android:layout_height="140dp"
-                        android:layout_marginLeft="30dp"
-                        app:vText="丁酉年 人言月"
-                        app:vTextColor="@color/black0"
-                        app:vTextNum="12"
-                        app:vTextSize="@dimen/text_size_normal" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:maxEms="1"
+                        android:textColor="@color/black0"
+                        android:text="丁酉年&#160;人言月" />
 
-                    <webapps.MOrangeCheck.com.Views.VerTextView
+
+                    <!--<webapps.MOrangeCheck.com.Views.VerTextView-->
+                    <!--android:id="@+id/week_day"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="75dp"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--app:vText="周三"-->
+                    <!--app:vTextColor="@color/black0"-->
+                    <!--app:vTextNum="10"-->
+                    <!--app:vTextSize="@dimen/text_size_normal" />-->
+
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/week_day"
                         android:layout_width="wrap_content"
-                        android:layout_height="75dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        app:vText="周三"
-                        app:vTextColor="@color/black0"
-                        app:vTextNum="20"
-                        app:vTextSize="@dimen/text_size_normal" />
+                        android:maxEms="1"
+                        android:textColor="@color/black0"
+                        android:text="周三" />
 
 
                 </LinearLayout>
@@ -93,18 +122,18 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="270dp"
-                android:gravity="center"
-
                 android:background="@drawable/dialog_left_point"
+
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/big_day"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="-35dp"
                     android:gravity="center"
                     android:text="2"
-                    android:layout_marginTop="-25dp"
                     android:textColor="@color/black0"
                     android:textSize="140sp" />
 
@@ -123,28 +152,28 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="126dp">
+            android:layout_height="135dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="110dp"
                 android:background="@drawable/dialog_bottom_circle"
                 android:gravity="center_horizontal"
-                android:paddingBottom="12dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="12dp">
 
                 <TextView
                     android:id="@+id/ana_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="4"
+                    android:maxLines="3"
                     android:paddingBottom="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="30dp"
-                    android:paddingTop="10dp"
+                    android:paddingTop="15dp"
                     android:text="长夜将至，我从今开始守望，\n至死方休。"
                     android:textColor="@color/black0"
-                    android:textSize="20sp" />
+                    android:textSize="17sp" />
 
 
                 <TextView
@@ -156,25 +185,22 @@
                     android:paddingRight="25dp"
                     android:text="- 守夜人誓言"
                     android:textColor="@color/black0"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
 
             </LinearLayout>
 
             <ImageView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:src="@mipmap/black_close"/>
+                android:src="@mipmap/black_close" />
 
         </RelativeLayout>
 
 
     </LinearLayout>
-
-
-
 
 
 </LinearLayout>

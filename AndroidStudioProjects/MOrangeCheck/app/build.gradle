@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -8,16 +12,39 @@ android {
         minSdkVersion 17
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
-        multiDexEnabled true
+        versionName "1.0.0"
+        multiDexEnabled false
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // apk name def
+            android.applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    output.outputFile = new File(output.outputFile.parent, "OrangeSign" + "-" + buildType.name + "-v" +
+                            defaultConfig.versionName + "-" + releaseTime() + ".apk");
+                }
+            }
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    //    配置keystore签名
+    signingConfigs {
+        release {
+            storeFile file('/Users/ppg777/AndroidStudioProjects/MOrangeCheck/OcKey.jks')
+            storePassword "webapps"
+            keyAlias "传承盛世"
+            keyPassword "webapps"
+        }
+    }
+
 
     dataBinding{
         enabled true
@@ -27,6 +54,17 @@ android {
         abortOnError false
     }
 
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+
+    }
+
+    dexOptions {
+        javaMaxHeapSize "2g"
+    }
+
 }
 
 dependencies {
@@ -34,9 +72,8 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
-    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:appcompat-v7:25.3.0'
+
     testCompile 'junit:junit:4.12'
     //主要依赖包
     compile project(':ppglibrary')
@@ -44,8 +81,6 @@ dependencies {
     compile 'org.litepal.android:core:1.4.1'
     //gson
     compile 'com.google.code.gson:gson:2.6.2'
-    //假期半弧进度条
-    compile project(':view')
     //可拖拽消除的view
     compile 'q.rorbin:badgeview:1.0.6'
     //图片选择器
@@ -61,6 +96,10 @@ dependencies {
     //时间选择器
     compile 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
     compile 'com.bm.photoview:library:1.4.1'
-
+    //  compile 'me.yokeyword:indexablerecyclerview:1.2.3'
+    compile project(':indexablerecyclerview')
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.8.9'
+    //流失布局,google出品
+    compile 'com.google.android:flexbox:0.3.0-alpha2'
 
 }

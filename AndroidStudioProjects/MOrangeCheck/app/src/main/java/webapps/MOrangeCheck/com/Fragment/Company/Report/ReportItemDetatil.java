@@ -9,12 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import ppg.com.yanlibrary.fragment.LoadingFragment;
-import ppg.com.yanlibrary.widget.recyclerview.CommonAdapter;
-import ppg.com.yanlibrary.widget.recyclerview.ViewHolder;
 import webapps.MOrangeCheck.com.R;
 import webapps.MOrangeCheck.com.Tool.LeftPaddingDividerItemDecoration;
 import webapps.MOrangeCheck.com.databinding.FragmentReportitemdatetilBinding;
@@ -30,7 +31,7 @@ public class ReportItemDetatil extends LoadingFragment {
 
 
     private List<String> list = new ArrayList<>();
-    private CommonAdapter<String> adapter;
+    private BaseQuickAdapter adapter;
 
     public ReportItemDetatil() {
         super(true);
@@ -43,7 +44,7 @@ public class ReportItemDetatil extends LoadingFragment {
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setItemAnimator(new DefaultItemAnimator());
         binding.recyclerView.addItemDecoration(new LeftPaddingDividerItemDecoration(mActivity,
-                DividerItemDecoration.VERTICAL, 15));
+                DividerItemDecoration.VERTICAL, 0));
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
         initData();
         return root;
@@ -53,12 +54,14 @@ public class ReportItemDetatil extends LoadingFragment {
         for (int i = 0; i < 5; i++) {
             list.add("9月" + i + "日");
         }
-        adapter = new CommonAdapter<String>(mActivity, R.layout.item_report_item, list) {
+        adapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_report_item, list) {
 
             @Override
-            public void convert(ViewHolder holder, String s) {
+            protected void convert(BaseViewHolder holder, String s) {
                 holder.setText(R.id.tv_date, s);
             }
+
+
         };
         binding.recyclerView.setAdapter(adapter);
     }

@@ -61,7 +61,7 @@ public class VerTextView extends View {
     // 列宽度
     private int mLineWidth = 0;
     // 列间距
-    private int mLineSpacing = 20;
+    private int mLineSpacing = 10;
 
     private int specHeight;
     private int specWidth;

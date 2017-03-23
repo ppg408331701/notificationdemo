@@ -25,10 +25,10 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
 
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.android.support:support-v4:25.1.0'
-    compile 'com.android.support:recyclerview-v7:25.1.0'
-    compile 'com.android.support:cardview-v7:25.1.0'
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:support-v4:25.3.0'
+    compile 'com.android.support:recyclerview-v7:25.3.0'
+    compile 'com.android.support:cardview-v7:25.3.0'
     // Glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
     //glide的扩展库,高斯模糊
@@ -37,8 +37,13 @@ dependencies {
     compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile files('libs/androideventbus-1.0.5.jar')
-    compile project(':okhttputils')
-    compile 'com.android.support:design:25.1.0'
+    compile 'com.android.support:design:25.3.0'
     compile files('libs/permission-lib.jar')
     compile project(':FlycoDialog_Lib')
+    //okhttp工具类
+    compile 'com.lzy.net:okgo:+'        //版本号使用 + 可以自动引用最新版
+    compile 'com.lzy.net:okrx:+'        //版本号使用 + 可以自动引用最新版
+    compile 'com.lzy.net:okserver:+'    //版本号使用 + 可以自动引用最新版
+    //rxpermissions
+    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.3@aar'
 }

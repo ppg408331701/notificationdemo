@@ -26,10 +26,10 @@ public abstract class AlmanacADialog extends BaseDialog<AlmanacADialog> {
 
     private Context context;
 
-    private VerTextView mLunarDate;
+    private TextView mLunarDate;
     private VerticalTextView mNumDate;
-    private VerTextView mAlmanacDate;
-    private VerTextView mWeekDay;
+    private TextView mAlmanacDate;
+    private TextView mWeekDay;
     private TextView mBigDay;
     private TextView mPrediction;
     private TextView mAnaContent;
@@ -44,18 +44,18 @@ public abstract class AlmanacADialog extends BaseDialog<AlmanacADialog> {
 
     @Override
     public View onCreateView() {
-        widthScale(0.97f);
-        heightScale(0.85f);
+        widthScale(0.95f);
+        heightScale(0.73f);
 
 
         // dismissAnim(this, new ZoomOutExit());
         View inflate = View.inflate(mContext, R.layout.dialog_almanac, null);
 
 
-        mLunarDate = (VerTextView) inflate.findViewById(R.id.lunar_date);
+        mLunarDate = (TextView) inflate.findViewById(R.id.lunar_date);
         mNumDate = (VerticalTextView) inflate.findViewById(R.id.num_date);
-        mAlmanacDate = (VerTextView) inflate.findViewById(R.id.almanac_date);
-        mWeekDay = (VerTextView) inflate.findViewById(R.id.week_day);
+        mAlmanacDate = (TextView) inflate.findViewById(R.id.almanac_date);
+        mWeekDay = (TextView) inflate.findViewById(R.id.week_day);
         mBigDay = (TextView) inflate.findViewById(R.id.big_day);
         mPrediction = (TextView) inflate.findViewById(R.id.prediction);
         mAnaContent = (TextView) inflate.findViewById(R.id.ana_content);

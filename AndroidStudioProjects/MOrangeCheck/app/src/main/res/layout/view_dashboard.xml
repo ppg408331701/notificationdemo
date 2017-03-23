@@ -29,7 +29,7 @@
                 android:layout_weight="1"
                 android:padding="5dp">
 
-                <io.netopen.hotbitmapgg.view.NewCreditSesameView
+                <webapps.MOrangeCheck.com.Views.NewCreditSesameView
                     android:id="@+id/sesame_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
                 android:layout_weight="1"
                 android:padding="5dp">
 
-                <io.netopen.hotbitmapgg.view.NewCreditSesameView
+                <webapps.MOrangeCheck.com.Views.NewCreditSesameView
                     android:id="@+id/sesame_view2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

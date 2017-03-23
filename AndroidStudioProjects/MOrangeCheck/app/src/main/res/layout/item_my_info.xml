@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@color/white0"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_main_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="15dp"
+        android:text="传承盛世" />
+
+    <TextView
+        android:id="@+id/tv_curren"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:background="@drawable/round_yellow"
+        android:text="当前"
+        android:layout_gravity="right|center_vertical"
+        android:textColor="@color/white0"
+        android:textSize="12sp"
+        android:layout_marginRight="15dp"/>
+
+
+</FrameLayout>

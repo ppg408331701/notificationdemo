@@ -21,6 +21,7 @@ import java.util.List;
 import ImageLoaderUtil.ImageLoaderUtil;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import ppg.com.yanlibrary.fragment.LoadingFragment;
+import ppg.com.yanlibrary.utils.Sdcard.FileUtil;
 import utils.ImageUtils;
 import utils.ScreenUtils;
 import webapps.MOrangeCheck.com.R;
@@ -59,10 +60,10 @@ public class Rank extends LoadingFragment implements View.OnClickListener {
                     @Override
                     public void run() {
                         Bitmap Screenbitmap = ScreenUtils.captureWithoutStatusBar(mActivity);
-                        boolean saveOK = ImageUtils.save(Screenbitmap, mActivity.getCacheDir()
+                        boolean saveOK = ImageUtils.save(Screenbitmap, FileUtil.getDiskCacheDir(mActivity)
                                 + "/Screenbitmap.jpeg", Bitmap.CompressFormat.JPEG, true);
                         if (saveOK) {
-                            ScreenDialog screenDialog = new ScreenDialog(mActivity, mActivity.getCacheDir()
+                            ScreenDialog screenDialog = new ScreenDialog(mActivity, FileUtil.getDiskCacheDir(mActivity)
                                     + "/Screenbitmap.jpeg") {
                                 @Override
                                 public void determineTask() {

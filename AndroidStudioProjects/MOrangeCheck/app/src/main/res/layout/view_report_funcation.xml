@@ -4,6 +4,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:showDividers="middle"
+        android:divider="@drawable/listdivider"
+        android:background="@color/white0"
         android:orientation="vertical">
 
 
@@ -27,7 +30,7 @@
         <RelativeLayout
             android:id="@+id/rl_leave"
             style="@style/RelativeLayout_item2"
-            android:layout_marginTop="1dp">
+             >
 
             <TextView
                 style="@style/item_text"
@@ -45,7 +48,7 @@
         <RelativeLayout
             android:id="@+id/rl_business"
             style="@style/RelativeLayout_item2"
-            android:layout_marginTop="1dp">
+             >
 
             <TextView
                 style="@style/item_text"
@@ -63,7 +66,7 @@
         <RelativeLayout
             android:id="@+id/rl_absenteeism"
             style="@style/RelativeLayout_item2"
-            android:layout_marginTop="1dp">
+             >
 
             <TextView
                 style="@style/item_text"
@@ -81,7 +84,7 @@
         <RelativeLayout
             android:id="@+id/rl_holiday"
             style="@style/RelativeLayout_item2"
-            android:layout_marginTop="1dp">
+             >
 
             <TextView
 
@@ -100,7 +103,7 @@
         <RelativeLayout
             android:id="@+id/rl_getOut"
             style="@style/RelativeLayout_item2"
-            android:layout_marginTop="1dp">
+             >
 
             <TextView
                 style="@style/item_text"
@@ -117,7 +120,7 @@
         <RelativeLayout
             android:id="@+id/rl_overtime"
             style="@style/RelativeLayout_item2"
-            android:layout_marginTop="1dp">
+             >
 
             <TextView
                 style="@style/item_text"
@@ -136,7 +139,7 @@
         <RelativeLayout
             android:id="@+id/rl_vacation_days"
             style="@style/RelativeLayout_item2"
-            android:layout_marginTop="1dp">
+             >
 
             <TextView
                 style="@style/item_text"
@@ -153,7 +156,7 @@
         <RelativeLayout
             android:id="@+id/rl_annual_leave"
             style="@style/RelativeLayout_item2"
-            android:layout_marginTop="1dp">
+             >
 
             <TextView
                 style="@style/item_text"

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.design.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="220dp"
+            android:background="@color/white0"
+            android:orientation="vertical">
+
+
+            <com.amap.api.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <FrameLayout
+                android:id="@+id/fl_search"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/transparenthalf2"
+                android:minHeight="45dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/ed_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/editext_circle"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="搜索"
+                    android:transitionName="ed_search"
+                    android:textColor="@color/gray5"
+                    android:textColorHint="@color/gray5"
+                    android:textSize="12sp" />
+
+            </FrameLayout>
+
+        </FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="@color/white0"
+            app:behavior_hideable="false"
+            app:behavior_peekHeight="220dp"
+            app:layout_behavior="@string/bottom_sheet_behavior" />
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>

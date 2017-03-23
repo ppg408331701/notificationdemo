@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_seach"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@color/backgroud_theme"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:showIn="@layout/fragment_meber">
+
+    <EditText
+        android:id="@+id/ed_meber_search"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/editext_circle"
+        android:gravity="center"
+        android:hint="搜索"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColorHint="@color/gray5"
+        android:textSize="12sp" />
+
+</LinearLayout>

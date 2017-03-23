@@ -22,7 +22,6 @@ import ppg.com.yanlibrary.widget.TopBarLayout;
 import webapps.MOrangeCheck.com.R;
 import webapps.MOrangeCheck.com.Tool.IntentTool;
 import webapps.MOrangeCheck.com.Tool.SmsTool;
-
 import webapps.MOrangeCheck.com.databinding.ActivityLoginBinding;
 
 /**
@@ -52,7 +51,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
         //读取短信验证码
         if (Build.VERSION.SDK_INT >= 23) {
-            MPermissions.requestPermissions(LoginActivity.this, 1111, Manifest.permission.READ_SMS,Manifest.permission.READ_EXTERNAL_STORAGE);
+            MPermissions.requestPermissions(LoginActivity.this, 1111, Manifest.permission.READ_SMS,
+                    Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE);
         } else {
             smsTool = new SmsTool(new Handler(), this, binding.edCode);
             getContentResolver().registerContentObserver(Uri.parse("content://sms/"), true, smsTool);

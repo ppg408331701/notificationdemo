@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/backgroud_theme</item>
+        <item name="colorPrimaryDark">@color/backgroud_theme</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorAccent">@color/orange_primary</item>
+        <item name="android:listDivider">@drawable/listdivider</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+    </style>
+
+
+</resources>

@@ -7,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -38,6 +37,9 @@ public class LeftPaddingDividerItemDecoration extends RecyclerView.ItemDecoratio
 
     private float Padding = 15;
 
+
+
+
     /**
      * Creates a divider {@link RecyclerView.ItemDecoration} that can be used with a
      * {@link LinearLayoutManager}.
@@ -52,6 +54,9 @@ public class LeftPaddingDividerItemDecoration extends RecyclerView.ItemDecoratio
         a.recycle();
         setOrientation(orientation);
     }
+
+
+
 
     /**
      * Sets the orientation for this divider. This should be called if
